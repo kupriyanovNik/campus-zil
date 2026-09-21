@@ -348,16 +348,29 @@ strong { font-weight: 600; }
   background-size: var(--cell) var(--cell);
   border-top: var(--line) solid var(--ink);
 }
-.contacts-grid { display: grid; grid-template-columns: minmax(0, 6fr) minmax(0, 6fr); gap: clamp(32px, 6vw, 96px); align-items: start; }
-.contacts-cta p { margin-top: 16px; font-size: 1.1rem; color: var(--ink-2); max-width: 32em; }
-.contacts-list { margin: 0; display: grid; grid-template-columns: 1fr 1fr; gap: 24px 32px; }
-.contacts-list > div:first-child { grid-column: 1 / -1; }
-.contacts-list dt { font-family: var(--font-display); font-weight: 700; font-size: 0.9rem; margin-bottom: 6px; }
-.contacts-list dd { margin: 0; }
-.contacts-list a { color: var(--ink); font-weight: 600; }
-.contacts-list .muted { color: var(--ink-2); font-size: 0.95rem; }
-.socials { display: flex; flex-wrap: wrap; gap: 8px; }
-.socials a { text-decoration: none; padding: 8px 14px; border: var(--line) solid var(--ink); border-radius: 999px; background: var(--paper); }
+.contacts-grid { display: grid; grid-template-columns: minmax(0, 7fr) minmax(0, 5fr); gap: clamp(32px, 6vw, 96px); align-items: center; }
+.contacts-cta p { margin-top: 16px; font-size: 1.1rem; color: var(--ink-2); max-width: 30em; }
+.contacts-cta .btn { margin-top: 28px; }
+.contacts-alt { font-size: 1rem !important; margin-top: 18px !important; }
+.contacts-alt a { color: var(--ink); font-weight: 600; }
+
+.contact-card { background: var(--paper); border: var(--line) solid var(--ink); border-radius: var(--radius); padding: 8px 28px 28px; }
+.contact-phone { display: block; padding: 22px 0 20px; border-bottom: var(--line) solid var(--ink); text-decoration: none; color: var(--ink); }
+.contact-phone-num { display: block; font-family: var(--font-display); font-weight: 800; font-size: clamp(1.5rem, 1rem + 1.6vw, 2.1rem); letter-spacing: -0.02em; font-variant-numeric: tabular-nums; }
+.contact-phone:hover .contact-phone-num { color: var(--blue); }
+.contact-phone-cap { display: block; margin-top: 6px; color: var(--ink-2); font-weight: 500; }
+
+.contact-rows { list-style: none; margin: 0; padding: 0; }
+.contact-rows li { display: grid; grid-template-columns: 22px 1fr; gap: 14px; padding: 18px 0 0; margin-top: 18px; border-top: 1px solid rgba(20, 33, 61, 0.14); }
+.contact-rows li:first-child { border-top: 0; margin-top: 0; padding-top: 22px; }
+.contact-ico { color: var(--ink); margin-top: 3px; }
+.contact-label { display: block; font-size: 0.85rem; color: var(--ink-3); margin-bottom: 4px; }
+.contact-value { display: block; font-weight: 600; color: var(--ink); text-decoration: none; }
+a.contact-value:hover { color: var(--blue); }
+.contact-note { display: block; color: var(--ink-2); font-size: 0.95rem; margin-top: 4px; }
+.contact-link { display: inline-block; margin-top: 8px; font-weight: 600; }
+.socials { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 6px; }
+.socials a { text-decoration: none; padding: 8px 14px; border: var(--line) solid var(--ink); border-radius: 999px; color: var(--ink); font-weight: 600; }
 .socials a:hover { background: var(--ink); color: #fff; }
 
 /* ---------- Footer ---------- */
@@ -416,6 +429,7 @@ strong { font-weight: 600; }
   .robotics-photo { position: static; }
   .robotics-photo img { aspect-ratio: 4 / 3; }
   .contacts-grid { grid-template-columns: 1fr; }
+  .contact-card { max-width: 560px; }
   .teacher-list { grid-template-columns: 1fr; }
   .teacher-list li, .teacher-list li:first-child { grid-template-columns: 64px 1fr; gap: 16px; }
   .avatar, .teacher-list li:first-child .avatar { width: 64px; height: 64px; }
@@ -444,8 +458,8 @@ strong { font-weight: 600; }
   .course.has-photo .course-photo { flex: none; aspect-ratio: 16 / 9; min-height: 0; }
   .ladder li { grid-template-columns: 1fr; gap: 6px; }
   .day-list li { grid-template-columns: 1fr; gap: 4px; }
-  .contacts-list { grid-template-columns: 1fr; }
-  .contacts-cta .hero-actions .btn { width: 100%; }
+  .contacts-cta .btn { width: 100%; }
+  .contact-card { padding: 4px 20px 20px; }
   .footer-row { flex-direction: column; align-items: flex-start; }
 
   .mobile-bar {
