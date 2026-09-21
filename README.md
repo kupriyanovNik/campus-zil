@@ -9,7 +9,8 @@
 index.html        — разметка всех секций
 css/style.css     — стили (дизайн‑система «Инженерная тетрадь»)
 js/main.js        — данные курсов и расписания, фильтр по возрасту, меню
-assets/img/       — фотографии с текущего сайта
+assets/img/       — фотографии: с текущего сайта и сгенерированные (см. ниже)
+assets/icons/     — SVG‑иконки направлений, сгенерированы через Higgsfield (Recraft)
 assets/favicon.svg
 PRODUCT.md        — факты о продукте и аудитории
 DESIGN.md         — визуальные правила: цвета, шрифты, компоненты
@@ -52,3 +53,15 @@ python3 -m http.server 8765
 npm i -D playwright && npx playwright install chromium
 node docs/overflow-check.mjs
 ```
+
+## Сгенерированные изображения
+
+Иконки направлений и часть фотографий сделаны через Higgsfield CLI, скрипты
+и промпты лежат в `docs/generation/`. Настоящие фото с сайта центра:
+`robotics-*.jpg`, `chess-*.jpg`, `english.jpg`, `calligraphy.jpg`, `otto.jpg`.
+Сгенерированные: `school`, `math`, `3d`, `arduino`, `tv`, `early`, `engineer`,
+`reading`, `games-dev`, `eng-start`. Галерея «Как проходят занятия» использует
+только настоящие снимки.
+
+Новая иконка: добавить строку `id|описание` в `docs/generation/icons.txt`,
+запустить `docs/generation/gen-icons.sh`, затем `python3 docs/generation/clean-svg.py`.

@@ -160,13 +160,15 @@ strong { font-weight: 600; }
 .board-side .sticker { max-width: 100%; white-space: normal; text-align: center; }
 .board-bottom { grid-column: 1 / -1; grid-row: 2; display: flex; flex-wrap: wrap; justify-content: center; gap: 14px 12px; margin-top: 3%; position: relative; z-index: 2; min-width: 0; }
 .sticker {
-  display: inline-flex; align-items: baseline; gap: 8px;
-  padding: 10px 14px; border-radius: 6px; border: var(--line) solid var(--ink);
+  display: inline-flex; align-items: center; gap: 8px;
+  padding: 9px 14px 9px 11px; border-radius: 6px; border: var(--line) solid var(--ink);
   font-family: var(--font-display); font-weight: 700; font-size: clamp(0.78rem, 0.6rem + 0.6vw, 0.95rem); letter-spacing: -0.01em; white-space: nowrap;
   background: var(--paper); color: var(--ink); transform: rotate(var(--r, 0deg));
   transition: opacity var(--t-med) var(--ease-out), filter var(--t-med) var(--ease-out), transform var(--t-med) var(--ease-out);
 }
 .sticker small { font-family: var(--font-text); font-weight: 600; font-size: 0.85em; }
+.sticker-icon { width: 1.7em; height: 1.7em; flex: none; }
+.sticker.is-ink .sticker-icon, .sticker.is-blue .sticker-icon { background: var(--paper); border-radius: 5px; padding: 2px; }
 .sticker.is-ink { background: var(--ink); color: #fff; }
 .sticker.is-blue { background: var(--blue); color: #fff; border-color: var(--blue); }
 .sticker.is-dim { opacity: 0.28; filter: grayscale(1); }
@@ -208,7 +210,10 @@ strong { font-weight: 600; }
 .course.has-photo { padding: 0; overflow: hidden; grid-row: span 2; display: flex; flex-direction: column; }
 .course.has-photo .course-body { padding: 20px; flex: 0 0 auto; height: auto; }
 .course-photo { flex: 1 1 200px; min-height: 180px; aspect-ratio: 16 / 10; object-fit: cover; width: 100%; border-bottom: var(--line) solid var(--ink); }
-.course-top { display: flex; align-items: flex-start; justify-content: space-between; gap: 12px; }
+.course-top { display: flex; align-items: center; gap: 12px; }
+.course-icon { width: 44px; height: 44px; flex: none; }
+.course-top h3 { flex: 1; }
+.course-top .age-tag { margin-left: auto; }
 .course h3 { font-size: 1.2rem; min-width: 0; overflow-wrap: anywhere; }
 .age-tag {
   flex: none; font-family: var(--font-display); font-weight: 700; font-size: 0.85rem;

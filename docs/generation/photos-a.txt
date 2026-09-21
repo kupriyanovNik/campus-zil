@@ -1,0 +1,5 @@
+school|A 6-year-old girl seen from the side at a desk, writing letters in a lined exercise book with a pencil, a pencil case and an alphabet card nearby; only the hand and sleeve of an adult teacher pointing at the page, the teacher's face is outside the frame
+math|A 9-year-old boy seen from behind and slightly to the side, solving a sheet of number puzzles with a pencil, small whiteboard with arithmetic in the background
+3d|An 11-year-old seen from the side, watching a small desktop 3D printer on the desk in the middle of printing a white plastic part, open laptop beside it showing a 3D model
+arduino|Top-down close-up of a 12-year-old's hands connecting jumper wires on a breadboard with an Arduino board and two lit LEDs, laptop keyboard at the edge of the frame
+tv|A 10-year-old child seen from behind at three-quarter angle, standing in front of a bright green chroma-key backdrop, a video camera on a tripod and a ring light in the foreground

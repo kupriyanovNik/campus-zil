@@ -1,0 +1,19 @@
+robotics|a small friendly wheeled robot with one antenna and a square head
+school|a pencil lying on an open exercise book with a big letter A on the page
+eng-native|two overlapping rounded speech bubbles, one yellow and one blue
+eng-start|three toy alphabet cubes stacked, showing the letters A, B and C
+eng-draw|a paintbrush leaving a wavy paint stroke next to a small speech bubble
+math|a wooden abacus with round beads
+olymp|a round medal with a star hanging on a ribbon
+3d|a desktop 3D printer printing a small cube on its bed
+engineer|a gear and a wrench crossed over each other
+cad|a vernier caliper measuring a small hexagonal nut
+games-dev|a video game controller with two joysticks
+arduino|a square microchip with pins and a small glowing LED beside it
+otto|a tiny walking biped robot with a boxy body, big round eyes and short legs
+tv|a video camera on a tripod with a small clapperboard
+reading|an open book with a stopwatch above it
+callig|a fountain pen nib drawing an elegant ink swash
+early|a stack of colorful toy building blocks with a small star on top
+oge|a graduation cap resting on a checklist sheet with check marks
+help|a light bulb with a check mark inside
