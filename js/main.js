@@ -81,24 +81,24 @@
   // Коллаж на 12‑колоночной сетке (десктоп): фото робототехники занимает
   // колонки 1–6 в рядах 1–3, фото шахмат — колонки 7–12 в рядах 5–7.
   // js — justify-self, чтобы длинные стикеры вылезали внутрь доски, а не за край.
-  // Две спокойные группы: пять стикеров справа от первого фото (выровнены
-  // по правому краю), пять слева от второго (по левому). Наклон чередуется.
+  // Раскладка доски: короткие ряды по одному‑два стикера со сдвигами,
+  // как кирпичная кладка, наклон ±2°. col/row — ячейки 12‑колоночной сетки.
   const LAYOUT = {
-    chess:        { col: '7 / 13', row: 1,  js: 'end',   rot: 2,  cls: 'is-ink' },
-    school:       { col: '7 / 13', row: 2,  js: 'end',   rot: -1.5, cls: '' },
-    'eng-native': { col: '7 / 13', row: 3,  js: 'end',   rot: 1.5, cls: 'is-blue' },
-    'eng-draw':   { col: '7 / 13', row: 4,  js: 'end',   rot: -2, cls: '' },
-    olymp:        { col: '6 / 13', row: 5,  js: 'end',   rot: 1.5, cls: 'is-ink' },
-    robotics:     { col: '1 / 7',  row: 8,  js: 'start', rot: -2, cls: '' },
-    '3d':         { col: '1 / 8',  row: 9,  js: 'start', rot: 1.5, cls: 'is-blue' },
-    arduino:      { col: '1 / 7',  row: 10, js: 'start', rot: -1.5, cls: '' },
-    tv:           { col: '1 / 7',  row: 11, js: 'start', rot: 2,  cls: 'is-ink' },
-    early:        { col: '1 / 8',  row: 12, js: 'start', rot: -1.5, cls: '' },
+    chess:        { col: '9 / 13', row: 1,  js: 'end',    rot: 2 },
+    school:       { col: '7 / 13', row: 2,  js: 'end',    rot: -1.5, cls: 'is-ink' },
+    'eng-native': { col: '7 / 11', row: 3,  js: 'start',  rot: 1.5,  cls: 'is-blue', ml: '6%' },
+    'eng-draw':   { col: '7 / 13', row: 4,  js: 'end',    rot: -2 },
+    olymp:        { col: '6 / 13', row: 5,  js: 'center', rot: 1.5,  cls: 'is-ink', ml: '-6%' },
+    robotics:     { col: '1 / 6',  row: 8,  js: 'start',  rot: -2,   ml: '4%' },
+    '3d':         { col: '1 / 8',  row: 9,  js: 'end',    rot: 1.5,  cls: 'is-blue' },
+    arduino:      { col: '1 / 5',  row: 10, js: 'start',  rot: -1.5 },
+    tv:           { col: '3 / 8',  row: 11, js: 'center', rot: 2,    cls: 'is-ink' },
+    early:        { col: '1 / 8',  row: 12, js: 'start',  rot: -1.5, ml: '2%' },
   };
   COURSES.filter(c => c.board).forEach((c, i) => {
-    const L = LAYOUT[c.id] || { col: 'auto', row: 'auto', js: 'center', rot: 0, cls: '' };
+    const L = LAYOUT[c.id] || { col: 'auto', row: 'auto', js: 'center', rot: 0 };
     const s = document.createElement('span');
-    s.className = `sticker ${L.cls}`;
+    s.className = `sticker ${L.cls || ''}`;
     s.dataset.id = c.id;
     s.style.setProperty('--r', `${L.rot}deg`);
     s.style.setProperty('--i', i);
