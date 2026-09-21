@@ -500,8 +500,9 @@ a.contact-value:hover { color: var(--blue); }
 .page-body { padding-block: clamp(40px, 6vw, 80px); }
 .page-grid { display: grid; grid-template-columns: minmax(0, 7fr) minmax(0, 5fr); gap: clamp(32px, 5vw, 72px); align-items: start; }
 
-.fact-list { margin: 0; border-top: var(--line) solid var(--ink); }
-.fact-list > div { display: grid; grid-template-columns: 220px 1fr; gap: 16px; padding: 16px 0; border-bottom: 1px solid rgba(20, 33, 61, 0.18); }
+.fact-list { margin: 0; background: var(--paper); border: var(--line) solid var(--ink); border-radius: var(--radius); padding: 6px 28px; }
+.fact-list > div { display: grid; grid-template-columns: 200px 1fr; gap: 16px; padding: 18px 0; border-top: 1px solid rgba(20, 33, 61, 0.14); }
+.fact-list > div:first-child { border-top: 0; }
 .fact-list dt { color: var(--ink-3); }
 .fact-list dd { margin: 0; font-weight: 600; }
 .pill { display: inline-block; padding: 4px 12px; border-radius: 999px; border: var(--line) solid var(--ink); font-weight: 600; font-size: 0.95rem; }
@@ -514,8 +515,9 @@ a.contact-value:hover { color: var(--blue); }
 .doc-preview:hover img { transform: rotate(0) translateY(-2px); }
 .doc-preview span { display: block; margin-top: 14px; text-align: center; }
 
-.vacancy-list { list-style: none; margin: 0; padding: 0; border-top: var(--line) solid var(--ink); }
-.vacancy { display: grid; grid-template-columns: 44px 1fr auto; gap: 20px; align-items: center; padding: 24px 0; border-bottom: 1px solid rgba(20, 33, 61, 0.18); }
+.vacancy-list { list-style: none; margin: 0; padding: 0 28px; background: var(--paper); border: var(--line) solid var(--ink); border-radius: var(--radius); }
+.vacancy { display: grid; grid-template-columns: 44px 1fr auto; gap: 20px; align-items: center; padding: 24px 0; border-top: 1px solid rgba(20, 33, 61, 0.14); }
+.vacancy:first-child { border-top: 0; }
 .vacancy h2 { font-size: 1.25rem; }
 .vacancy p { margin-top: 6px; color: var(--ink-2); max-width: 46em; }
 .vacancy-icon { width: 44px; height: 44px; }
@@ -534,7 +536,9 @@ a.contact-value:hover { color: var(--blue); }
   .doc-preview { max-width: 420px; }
 }
 @media (max-width: 600px) {
+  .fact-list { padding: 4px 20px; }
   .fact-list > div { grid-template-columns: 1fr; gap: 4px; }
+  .vacancy-list { padding: 0 20px; }
   .page-actions .btn { width: 100%; }
   .vacancy { grid-template-columns: 44px 1fr; }
   .vacancy .btn { grid-column: 2; justify-self: start; }
