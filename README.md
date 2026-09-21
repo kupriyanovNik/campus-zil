@@ -58,7 +58,7 @@ node docs/overflow-check.mjs
 
 Иконки направлений и часть фотографий сделаны через Higgsfield CLI, скрипты
 и промпты лежат в `docs/generation/`. Настоящие фото с сайта центра:
-`robotics-*.jpg`, `chess-*.jpg`, `english.jpg`, `calligraphy.jpg`, `otto.jpg`.
+`robotics-*.jpg`, `chess-*.jpg`, `english.jpg`, `calligraphy.jpg`, `otto.jpg`, `teacher-vinogradov.jpg`.
 Сгенерированные: `school`, `math`, `3d`, `arduino`, `tv`, `early`, `engineer`,
 `reading`, `games-dev`, `eng-start`. Галерея «Как проходят занятия» использует
 только настоящие снимки.
