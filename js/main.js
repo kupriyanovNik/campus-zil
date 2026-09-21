@@ -9,9 +9,9 @@
   // minAge / maxAge — включительно. days — короткие метки для карточки.
   const COURSES = [
     { id: 'robotics', cat: 'tech', title: 'Робототехника', minAge: 4, maxAge: 14, price: '9 600 ₽', per: 'в месяц', format: '8 занятий по 60 мин', days: ['Пн', 'Вт', 'Чт', 'Сб'], photo: 'assets/img/robotics-controller.jpg', desc: 'Авторская программа: сборка по чертежу, механизмы, управление, а с 12 лет программирование и электроника.', board: true, boardLabel: 'Робототехника' },
-    { id: 'chess', cat: 'games', title: 'Шахматы', minAge: 4, maxAge: 14, price: '8 800 ₽', per: 'в месяц', format: '8 занятий по 60 мин', days: ['Пн', 'Пт'], photo: 'assets/img/chess-class.jpg', desc: 'От правил до турниров.', board: true, boardLabel: 'Шахматы' },
+    { id: 'chess', cat: 'games', title: 'Шахматы', minAge: 4, maxAge: 14, price: '8 800 ₽', per: 'в месяц', format: '8 занятий по 60 мин', days: ['Пн', 'Пт'], photo: 'assets/img/chess-class.jpg', desc: 'От правил до турниров.', board: true, side: true, boardLabel: 'Шахматы' },
     { id: 'school', cat: 'study', title: 'Подготовка к школе', minAge: 5, maxAge: 7, price: '13 000 ₽', per: 'в месяц', format: '24 занятия, будни 13:30–15:30 и суббота', desc: 'Математика, русский язык, чтение. Вариант с сопровождением из сада или школы: 15 000 ₽ за 48 занятий.', days: ['Пн–Пт', 'Сб'], board: true, boardLabel: 'Подготовка к школе' },
-    { id: 'eng-native', cat: 'lang', title: 'Английский с носителем', minAge: 5, maxAge: 14, price: '12 600 ₽', per: 'в месяц', format: '8 занятий по 45 мин', photo: 'assets/img/english.jpg', desc: 'Занятия ведёт носитель британского английского. Разговорные группы по воскресеньям: 8+ в 12:00 (1 500 ₽ за занятие) и 12+ в 11:00 (2 000 ₽).', days: ['Вс'], board: true, boardLabel: 'Английский' },
+    { id: 'eng-native', cat: 'lang', title: 'Английский с носителем', minAge: 5, maxAge: 14, price: '12 600 ₽', per: 'в месяц', format: '8 занятий по 45 мин', photo: 'assets/img/english.jpg', desc: 'Занятия ведёт носитель британского английского. Разговорные группы по воскресеньям: 8+ в 12:00 (1 500 ₽ за занятие) и 12+ в 11:00 (2 000 ₽).', days: ['Вс'], board: true, side: true, boardLabel: 'Английский' },
     { id: 'eng-start', cat: 'lang', title: 'Английский для начинающих', minAge: 3, maxAge: 6, price: '9 600 ₽', per: 'в месяц', format: '8 занятий по 30 мин', desc: 'Английский для самых маленьких, короткие занятия по 30 минут.' },
     { id: 'eng-draw', cat: 'lang', title: 'Рисуем и изучаем английский', minAge: 3, maxAge: 7, price: '9 600 ₽', per: 'в месяц', format: '8 занятий по 45 мин', desc: 'Рисование и английский на одном занятии.', board: true, boardLabel: 'Рисуем по‑английски' },
     { id: 'math', cat: 'study', title: 'Математика', minAge: 5, maxAge: 10, price: '6 900 ₽', per: 'в месяц', format: '8 занятий по 30 мин', desc: 'Короткие занятия по 30 минут. Арифметика для младших школьников: 8 занятий по 45 минут за ту же цену.' },
@@ -20,7 +20,7 @@
     { id: 'engineer', cat: 'tech', title: 'Юный инженер', minAge: 10, maxAge: 14, price: 'по запросу', per: '', format: 'вторник и четверг, 17:00', days: ['Вт', 'Чт'], desc: 'Свои модели от идеи до 3D‑печати: эскиз, CAD, прототип.' },
     { id: 'cad', cat: 'tech', title: 'Штангенциркуль и CAD', minAge: 8, maxAge: 14, price: '12 600 ₽', per: 'в месяц', format: '8 занятий по 60 мин', desc: 'Измеряем настоящие детали и переносим их в 3D‑модель. Нужно уверенно владеть компьютером. Филамент: 800 ₽ в месяц.' },
     { id: 'games-dev', cat: 'tech', title: 'Информатика: создание игр', minAge: 10, maxAge: 14, price: '12 600 ₽', per: 'в месяц', format: '8 занятий по 60 мин', desc: 'Пишем свои игры на занятиях по информатике.' },
-    { id: 'arduino', cat: 'tech', title: 'Arduino и интернет вещей', minAge: 12, maxAge: 14, price: '10 000 ₽', per: 'в месяц', format: '8 занятий по 60 мин', desc: 'Собираем устройства на Arduino и подключаем их к интернету.', board: true, boardLabel: 'Arduino' },
+    { id: 'arduino', cat: 'tech', title: 'Arduino и интернет вещей', minAge: 12, maxAge: 14, price: '10 000 ₽', per: 'в месяц', format: '8 занятий по 60 мин', desc: 'Собираем устройства на Arduino и подключаем их к интернету.', board: true, side: true, boardLabel: 'Arduino' },
     { id: 'otto', cat: 'tech', title: 'Мини‑робот Отто', minAge: 7, maxAge: 12, price: '9 500 ₽', per: 'за курс', format: '5 занятий по 60 мин, робот остаётся у ребёнка', photo: 'assets/img/otto.jpg', desc: 'Собираем и программируем шагающего робота. В цену входит сам робот.' },
     { id: 'tv', cat: 'games', title: 'Телестудия', minAge: 9, maxAge: 14, price: 'по запросу', per: '', format: 'группы по договорённости', desc: 'Съёмка в студии с хромакеем, работа в кадре и за камерой.', board: true, boardLabel: 'Телестудия' },
     { id: 'reading', cat: 'study', title: 'Скорочтение', minAge: 6, maxAge: 14, price: '6 900 ₽', per: 'в месяц', format: '8 занятий по 45 мин в группе', desc: 'Индивидуальный формат: 16 000 ₽ в месяц за 8 занятий.' },
@@ -79,17 +79,19 @@
 
   const boardSide = $('[data-board-side]');
   const boardBottom = $('[data-board-bottom]');
-  const STYLES = ['is-ink', '', 'is-blue', '', 'is-ink', '', 'is-blue', '', 'is-ink', '', 'is-blue'];
+  // Три коротких стикера справа от фото, остальные — кучей снизу.
+  const STYLES = ['is-ink', '', 'is-blue', '', 'is-ink', '', 'is-blue', 'is-ink', '', 'is-blue', ''];
   const ROTS = [3, -2, 2, -3, 3, -2, 2, 4, -3, 2, -2];
-  const boardCourses = COURSES.filter(c => c.board).slice(0, STYLES.length);
-  boardCourses.forEach((c, i) => {
+  const side = COURSES.filter(c => c.board && c.side).slice(0, 3);
+  const rest = COURSES.filter(c => c.board && !c.side);
+  [...side, ...rest].forEach((c, i) => {
     const s = document.createElement('span');
-    s.className = `sticker ${STYLES[i]}`;
+    s.className = `sticker ${STYLES[i % STYLES.length]}`;
     s.dataset.id = c.id;
-    s.style.setProperty('--r', `${ROTS[i]}deg`);
+    s.style.setProperty('--r', `${ROTS[i % ROTS.length]}deg`);
     s.style.setProperty('--i', i);
     s.innerHTML = `${c.boardLabel}<small>${c.minAge}+</small>`;
-    (i < 3 ? boardSide : boardBottom).appendChild(s);
+    (i < side.length ? boardSide : boardBottom).appendChild(s);
   });
   const stickers = () => $$('.sticker');
 
