@@ -93,8 +93,6 @@
     s.innerHTML = `<img class="sticker-icon" src="assets/icons/${c.id}.svg" alt="" width="20" height="20">${c.boardLabel}<small>${c.minAge}+</small>`;
     (i < side.length ? boardSide : boardBottom).appendChild(s);
   });
-  const stickers = () => $$('.sticker');
-
   /* ---------- Возрастные чипы (две группы, синхронные) ---------- */
 
   const chipGroups = $$('[data-age-chips]');
@@ -156,8 +154,6 @@
     gridEl.appendChild(art);
   });
 
-  const resultEls = $$('[data-age-result]');
-
   function render() {
     // чипы
     chipGroups.forEach(group => {
@@ -179,18 +175,6 @@
     });
     emptyEl.hidden = shown > 0;
 
-    // доска
-    stickers().forEach(s => {
-      const c = COURSES.find(x => x.id === s.dataset.id);
-      s.classList.toggle('is-dim', !fitsAge(c, state.age));
-    });
-
-    // подпись
-    const total = COURSES.filter(c => fitsAge(c, state.age)).length;
-    const text = state.age === null
-      ? ''
-      : `Для ${state.age === 14 ? '14 лет и старше' : `${state.age} ${plural(state.age, 'года', 'лет', 'лет')}`}: ${total} ${plural(total, 'направление', 'направления', 'направлений')}`;
-    resultEls.forEach(el => { el.textContent = text; });
   }
 
   render();

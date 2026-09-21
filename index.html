@@ -8,9 +8,9 @@ OWN-WORLD: белый лист с клеткой 24px, целые поля жё�
 (#14213D), синяя чертёжная линия (#2457F5). Unbounded + Golos Text. Обводка вместо теней.
 STORY: родитель за секунды видит, что есть для возраста его ребёнка, когда и почём,
 и записывается на бесплатный пробный урок.
-FIRST VIEWPORT: жёлтое поле; слева заголовок, выбор возраста и кнопка записи;
+FIRST VIEWPORT: жёлтое поле; слева заголовок, подзаголовок и кнопка записи;
 справа доска со «стикерами» курсов и одной фотографией, которая раскладывается при загрузке.
-FORM: одностраничник; подпись — фильтр по возрасту, связывающий доску и сетку курсов.
+FORM: одностраничник; подпись — доска стикеров в hero и фильтр по возрасту в сетке курсов.
 -->
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -61,12 +61,6 @@ FORM: одностраничник; подпись — фильтр по воз�
     <div class="hero-copy">
       <h1 id="hero-title">Кружки для детей от&nbsp;3,5 до&nbsp;14 лет в&nbsp;ЗИЛАРТе</h1>
       <p class="hero-lead">Робототехника, шахматы, подготовка к&nbsp;школе, английский с&nbsp;носителем и&nbsp;ещё полтора десятка направлений. Пробный урок бесплатно.</p>
-
-      <div class="age-picker" role="group" aria-labelledby="age-label">
-        <p class="age-label" id="age-label">Сколько лет ребёнку?</p>
-        <div class="age-chips" data-age-chips></div>
-        <p class="age-result" data-age-result aria-live="polite"></p>
-      </div>
 
       <div class="hero-actions">
         <a class="btn btn-primary btn-lg" href="https://yandex.ru/business/widget/request/company/144063589817" target="_blank" rel="noopener">Записаться на пробный урок</a>
