@@ -324,9 +324,20 @@ strong { font-weight: 600; }
 .carousel-btn:hover { background: var(--ink); color: #fff; }
 .carousel-btn.is-prev { left: clamp(8px, 3vw, 40px); }
 .carousel-btn.is-next { right: clamp(8px, 3vw, 40px); }
-.carousel-dots { display: flex; justify-content: center; gap: 8px; margin-top: 18px; }
-.carousel-dots button { width: 10px; height: 10px; padding: 0; border-radius: 50%; border: var(--line) solid var(--ink); background: var(--paper); cursor: pointer; transition: background-color var(--t-fast), transform var(--t-fast); }
-.carousel-dots button[aria-selected="true"] { background: var(--ink); transform: scale(1.2); }
+.carousel-dots { display: flex; justify-content: center; align-items: center; gap: 8px; margin-top: 18px; }
+.carousel-dots button {
+  position: relative; width: 10px; height: 10px; padding: 0; border-radius: 999px; overflow: hidden;
+  border: var(--line) solid var(--ink); background: var(--paper); cursor: pointer;
+  transition: background-color var(--t-fast);
+}
+.carousel-dots button[aria-selected="true"] { width: 44px; }
+.carousel-dots button::after {
+  content: ""; position: absolute; inset: 0; background: var(--ink); transform: scaleX(0); transform-origin: left;
+}
+.carousel-dots button[aria-selected="true"]:not(.is-running)::after { transform: scaleX(1); }
+.carousel-dots button.is-running::after { animation: dot-fill 4000ms linear forwards; }
+.carousel.is-paused .carousel-dots button.is-running::after { animation-play-state: paused; }
+@keyframes dot-fill { from { transform: scaleX(0); } to { transform: scaleX(1); } }
 
 /* ---------- Contacts ---------- */
 .contacts {
@@ -452,4 +463,5 @@ strong { font-weight: 600; }
   html { scroll-behavior: auto; }
   *, *::before, *::after { transition-duration: 0.01ms !important; animation-duration: 0.01ms !important; }
   .carousel-slide figure { transform: none; opacity: 1; }
+  .carousel-dots button::after { animation: none !important; transform: scaleX(1); }
 }

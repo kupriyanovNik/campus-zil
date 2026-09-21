@@ -325,8 +325,28 @@
     const mark = () => {
       const real = ((index - n) % n + n) % n;
       slides.forEach((s, k) => s.classList.toggle('is-active', ((k - n) % n + n) % n === real));
-      dots.forEach((d, k) => d.setAttribute('aria-selected', String(k === real)));
+      dots.forEach((d, k) => {
+        const on = k === real;
+        d.setAttribute('aria-selected', String(on));
+        d.classList.remove('is-running');
+        if (on && autoplayOn) { void d.offsetWidth; d.classList.add('is-running'); }
+      });
     };
+
+    // Автопрокрутка: каждые 4 с, полоска в активной точке показывает отсчёт.
+    const AUTOPLAY_MS = 4000;
+    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    let autoplayOn = !reduceMotion;
+    let timer = null;
+    let paused = false;
+    const stopTimer = () => { clearTimeout(timer); timer = null; };
+    const schedule = () => {
+      stopTimer();
+      if (!autoplayOn || paused || document.hidden) return;
+      timer = setTimeout(() => go(index + 1), AUTOPLAY_MS);
+    };
+    const pause = () => { paused = true; stopTimer(); carousel.classList.add('is-paused'); };
+    const resume = () => { paused = false; carousel.classList.remove('is-paused'); mark(); schedule(); };
 
     function go(i, animate = true) {
       index = i;
@@ -334,6 +354,7 @@
       apply(offset, animate);
       mark();
       animating = animate;
+      schedule();
     }
 
     // После анимации у края незаметно прыгаем к тому же слайду среди оригиналов.
@@ -395,6 +416,16 @@
 
     window.addEventListener('resize', () => go(index, false));
     carousel.setAttribute('tabindex', '0');
+
+    carousel.addEventListener('mouseenter', pause);
+    carousel.addEventListener('mouseleave', resume);
+    carousel.addEventListener('focusin', pause);
+    carousel.addEventListener('focusout', e => { if (!carousel.contains(e.relatedTarget)) resume(); });
+    document.addEventListener('visibilitychange', () => { if (document.hidden) stopTimer(); else resume(); });
+    // На тачскринах mouseenter не приходит: пауза на время касания.
+    viewport.addEventListener('touchstart', () => { paused = true; stopTimer(); }, { passive: true });
+    viewport.addEventListener('touchend', () => { paused = false; }, { passive: true });
+
     go(n, false);
   }
 
