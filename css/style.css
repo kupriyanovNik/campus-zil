@@ -290,15 +290,34 @@ strong { font-weight: 600; }
 .teacher-list li:first-child { grid-column: 1 / -1; }
 .teacher-list li:first-child p { max-width: 40em; }
 .teacher-list p { color: var(--ink-2); margin-top: 6px; }
-/* ---------- Gallery ---------- */
+/* ---------- Gallery / carousel ---------- */
 .gallery .section-head { margin-bottom: 24px; }
-.gallery-strip {
-  display: flex; gap: 16px; overflow-x: auto; scroll-snap-type: x mandatory; padding: 4px var(--gutter) 12px;
-  scrollbar-width: thin;
+.carousel { position: relative; --slide-w: min(520px, 72vw); }
+.carousel-viewport { overflow: hidden; padding-block: 12px 4px; cursor: grab; touch-action: pan-y; }
+.carousel-viewport.is-dragging { cursor: grabbing; }
+.carousel-track {
+  list-style: none; margin: 0; padding: 0; display: flex; gap: 20px; will-change: transform;
+  transition: transform 480ms var(--ease-out);
 }
-.gallery-strip figure { flex: 0 0 min(420px, 78vw); margin: 0; scroll-snap-align: start; }
-.gallery-strip img { aspect-ratio: 4 / 3; object-fit: cover; border: var(--line) solid var(--ink); border-radius: var(--radius); }
-.gallery-strip figcaption { margin-top: 8px; font-size: 0.92rem; color: var(--ink-2); }
+.carousel-viewport.is-dragging .carousel-track { transition: none; }
+.carousel-slide { flex: 0 0 var(--slide-w); }
+.carousel-slide figure { margin: 0; transform: scale(0.88); opacity: 0.55; transition: transform 480ms var(--ease-out), opacity 480ms var(--ease-out); transform-origin: center; }
+.carousel-slide.is-active figure { transform: scale(1); opacity: 1; }
+.carousel-slide img { aspect-ratio: 4 / 3; object-fit: cover; border: var(--line) solid var(--ink); border-radius: var(--radius); user-select: none; -webkit-user-drag: none; pointer-events: none; }
+.carousel-slide figcaption { margin-top: 10px; font-size: 0.95rem; color: var(--ink-2); text-align: center; }
+.carousel-btn {
+  position: absolute; top: calc(50% - 32px); z-index: 2; width: 52px; height: 52px; border-radius: 50%;
+  border: var(--line) solid var(--ink); background: var(--paper); color: var(--ink); cursor: pointer;
+  display: grid; place-items: center; transition: background-color var(--t-fast), color var(--t-fast), opacity var(--t-fast);
+}
+.carousel-btn:hover { background: var(--ink); color: #fff; }
+.carousel-btn:disabled { opacity: 0.3; cursor: default; }
+.carousel-btn:disabled:hover { background: var(--paper); color: var(--ink); }
+.carousel-btn.is-prev { left: clamp(8px, 3vw, 40px); }
+.carousel-btn.is-next { right: clamp(8px, 3vw, 40px); }
+.carousel-dots { display: flex; justify-content: center; gap: 8px; margin-top: 18px; }
+.carousel-dots button { width: 10px; height: 10px; padding: 0; border-radius: 50%; border: var(--line) solid var(--ink); background: var(--paper); cursor: pointer; transition: background-color var(--t-fast), transform var(--t-fast); }
+.carousel-dots button[aria-selected="true"] { background: var(--ink); transform: scale(1.2); }
 
 /* ---------- Contacts ---------- */
 .contacts {
@@ -420,4 +439,5 @@ strong { font-weight: 600; }
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
   *, *::before, *::after { transition-duration: 0.01ms !important; animation-duration: 0.01ms !important; }
+  .carousel-slide figure { transform: none; opacity: 1; }
 }

@@ -204,12 +204,23 @@ FORM: одностраничник; подпись — доска стикеро
       <h2 id="gallery-title">Как проходят занятия</h2>
     </div>
   </div>
-  <div class="gallery-strip" tabindex="0" aria-label="Фотографии с занятий, листайте горизонтально">
-    <figure><img src="assets/img/robotics-controller.jpg" alt="Мальчик управляет собранной моделью с пульта" loading="lazy" width="1000" height="1000"><figcaption>Робототехника, группа 4+</figcaption></figure>
-    <figure><img src="assets/img/chess-class.jpg" alt="Шахматный класс, дети играют партии на время" loading="lazy" width="1000" height="1000"><figcaption>Шахматы, турнир на время</figcaption></figure>
-    <figure><img src="assets/img/english.jpg" alt="Урок английского с носителем языка у интерактивной доски" loading="lazy" width="1024" height="1024"><figcaption>Английский с носителем</figcaption></figure>
-    <figure><img src="assets/img/calligraphy.jpg" alt="Урок каллиграфии, дети рисуют тушью" loading="lazy" width="960" height="1280"><figcaption>Каллиграфия</figcaption></figure>
-    <figure><img src="assets/img/chess-award.jpg" alt="Мальчик с грамотой после шахматного турнира и два преподавателя" loading="lazy" width="1024" height="1024"><figcaption>Награждение после турнира</figcaption></figure>
+  <div class="carousel" data-carousel>
+    <button class="carousel-btn is-prev" type="button" data-prev aria-label="Предыдущее фото">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg>
+    </button>
+    <div class="carousel-viewport" data-viewport>
+      <ul class="carousel-track" data-track>
+        <li class="carousel-slide"><figure><img src="assets/img/robotics-controller.jpg" alt="Мальчик управляет собранной моделью с пульта" width="1000" height="1000"><figcaption>Робототехника, группа 4+</figcaption></figure></li>
+        <li class="carousel-slide"><figure><img src="assets/img/chess-class.jpg" alt="Шахматный класс, дети играют партии на время" width="1000" height="1000"><figcaption>Шахматы, турнир на время</figcaption></figure></li>
+        <li class="carousel-slide"><figure><img src="assets/img/english.jpg" alt="Урок английского с носителем языка у интерактивной доски" width="1024" height="1024"><figcaption>Английский с носителем</figcaption></figure></li>
+        <li class="carousel-slide"><figure><img src="assets/img/calligraphy.jpg" alt="Урок каллиграфии, дети рисуют тушью" width="960" height="1280"><figcaption>Каллиграфия</figcaption></figure></li>
+        <li class="carousel-slide"><figure><img src="assets/img/chess-award.jpg" alt="Мальчик с грамотой после шахматного турнира и два преподавателя" width="1024" height="1024"><figcaption>Награждение после турнира</figcaption></figure></li>
+      </ul>
+    </div>
+    <button class="carousel-btn is-next" type="button" data-next aria-label="Следующее фото">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 5l7 7-7 7"/></svg>
+    </button>
+    <div class="carousel-dots" data-dots role="tablist" aria-label="Выбор фото"></div>
   </div>
 </section>
 

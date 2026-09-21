@@ -25,7 +25,7 @@ for (const w of WIDTHS) {
       const r = el.getBoundingClientRect();
       if (r.width === 0 || r.height === 0) continue;
       // элементы, чей правый край за экраном (кроме намеренно скроллящихся полос)
-      const scroller = el.closest('.gallery-strip, .day-tabs, .seg');
+      const scroller = el.closest('.carousel-viewport, .day-tabs, .seg');
       if (!scroller && (r.right > vw + 1 || r.left < -1)) {
         out.push(`${el.tagName.toLowerCase()}.${[...el.classList].join('.')} right=${Math.round(r.right)} left=${Math.round(r.left)}`);
       }

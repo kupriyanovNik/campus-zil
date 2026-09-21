@@ -286,6 +286,95 @@
   }
   renderDay();
 
+  /* ---------- Карусель галереи ---------- */
+
+  const carousel = $('[data-carousel]');
+  if (carousel) {
+    const viewport = $('[data-viewport]', carousel);
+    const track = $('[data-track]', carousel);
+    const slides = $$('.carousel-slide', track);
+    const prevBtn = $('[data-prev]', carousel);
+    const nextBtn = $('[data-next]', carousel);
+    const dotsEl = $('[data-dots]', carousel);
+    let index = 0;
+    let offset = 0;
+
+    slides.forEach((_, i) => {
+      const d = document.createElement('button');
+      d.type = 'button';
+      d.setAttribute('role', 'tab');
+      d.setAttribute('aria-label', `Фото ${i + 1} из ${slides.length}`);
+      d.addEventListener('click', () => go(i));
+      dotsEl.appendChild(d);
+    });
+    const dots = $$('button', dotsEl);
+
+    const offsetFor = (i) => {
+      const s = slides[i];
+      return viewport.clientWidth / 2 - (s.offsetLeft + s.offsetWidth / 2);
+    };
+    const apply = (x) => { track.style.transform = `translate3d(${x}px, 0, 0)`; };
+
+    function go(i) {
+      index = Math.max(0, Math.min(slides.length - 1, i));
+      offset = offsetFor(index);
+      apply(offset);
+      slides.forEach((s, k) => s.classList.toggle('is-active', k === index));
+      dots.forEach((d, k) => d.setAttribute('aria-selected', String(k === index)));
+      prevBtn.disabled = index === 0;
+      nextBtn.disabled = index === slides.length - 1;
+    }
+
+    prevBtn.addEventListener('click', () => go(index - 1));
+    nextBtn.addEventListener('click', () => go(index + 1));
+    carousel.addEventListener('keydown', e => {
+      if (e.key === 'ArrowLeft') { e.preventDefault(); go(index - 1); }
+      if (e.key === 'ArrowRight') { e.preventDefault(); go(index + 1); }
+    });
+
+    // Перетаскивание мышью и пальцем
+    let startX = 0, dragX = 0, dragging = false, pointerId = null;
+    viewport.addEventListener('pointerdown', e => {
+      if (e.button !== undefined && e.button !== 0) return;
+      dragging = true; pointerId = e.pointerId; startX = e.clientX; dragX = 0;
+      viewport.classList.add('is-dragging');
+      viewport.setPointerCapture(pointerId);
+    });
+    viewport.addEventListener('pointermove', e => {
+      if (!dragging) return;
+      dragX = e.clientX - startX;
+      const atEdge = (index === 0 && dragX > 0) || (index === slides.length - 1 && dragX < 0);
+      apply(offset + (atEdge ? dragX * 0.35 : dragX));
+    });
+    const endDrag = () => {
+      if (!dragging) return;
+      dragging = false;
+      viewport.classList.remove('is-dragging');
+      const step = slides[0].offsetWidth * 0.2;
+      if (dragX < -step) go(index + 1);
+      else if (dragX > step) go(index - 1);
+      else go(index);
+    };
+    viewport.addEventListener('pointerup', endDrag);
+    viewport.addEventListener('pointercancel', endDrag);
+    viewport.addEventListener('click', e => { if (Math.abs(dragX) > 5) e.preventDefault(); }, true);
+
+    // Колесо мыши по горизонтали (трекпад)
+    let wheelLock = 0;
+    viewport.addEventListener('wheel', e => {
+      if (Math.abs(e.deltaX) <= Math.abs(e.deltaY)) return;
+      e.preventDefault();
+      const now = Date.now();
+      if (now - wheelLock < 500) return;
+      wheelLock = now;
+      go(index + (e.deltaX > 0 ? 1 : -1));
+    }, { passive: false });
+
+    window.addEventListener('resize', () => go(index));
+    carousel.setAttribute('tabindex', '0');
+    go(0);
+  }
+
   /* ---------- Меню ---------- */
 
   const burger = $('#burger');
