@@ -3,8 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Лицензия — Кампус Зил</title>
-<meta name="description" content="Лицензия на образовательную деятельность ООО «ЭгоПроф» (образовательный центр «Кампус Зил»): номер, дата, лицензирующий орган, выписка из реестра.">
+<title>Новости — Кампус Зил</title>
+<meta name="description" content="Новости образовательного центра «Кампус Зил»: турниры по шахматам, олимпиады, новые курсы, каникулярные занятия и жизнь центра.">
 <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -42,35 +42,17 @@
 <main id="content">
 <section class="page-hero">
   <div class="container">
-    <p class="crumbs"><a href="index.html">Главная</a> / Лицензия</p>
-    <h1>Лицензия на образовательную деятельность</h1>
-    <p class="page-lead">Образовательный центр «Кампус Зил» работает по лицензии Департамента образования и науки города Москвы. Лицензия действующая, бессрочная.</p>
+    <p class="crumbs"><a href="index.html">Главная</a> / Новости</p>
+    <h1>Новости центра</h1>
+    <p class="page-lead">Турниры, олимпиады, новые курсы и просто хорошие моменты с занятий. Чтобы ничего не пропустить, подписывайтесь на наш <a href="https://t.me/campuszil" target="_blank" rel="noopener">Telegram</a>.</p>
   </div>
 </section>
 
-<section class="section page-body">
-  <div class="container page-grid">
-    <div>
-      <dl class="fact-list">
-        <div><dt>Статус</dt><dd><span class="pill pill-ok">Действующая</span></dd></div>
-        <div><dt>Регистрационный номер</dt><dd>№ Л035‑01298‑77/00642166</dd></div>
-        <div><dt>Дата предоставления</dt><dd>28 февраля 2023 года, решение № 326Л</dd></div>
-        <div><dt>Лицензирующий орган</dt><dd>Департамент образования и науки города Москвы</dd></div>
-        <div><dt>Лицензиат</dt><dd>ООО «ЭгоПроф»<br><span class="muted">ИНН 5009092414, ОГРН 1145009001610</span></dd></div>
-        <div><dt>Виды образования</dt><dd>Дополнительное образование детей и взрослых<br>Дополнительное профессиональное образование</dd></div>
-      </dl>
-
-      <div class="page-actions">
-        <a class="btn btn-primary" href="assets/docs/licence-extract.pdf" download>Скачать выписку из реестра (PDF)</a>
-        <a class="btn btn-ghost" href="https://islod.obrnadzor.gov.ru/rlic/" target="_blank" rel="noopener">Проверить в реестре Рособрнадзора</a>
-      </div>
-      <p class="muted page-note">Выписка сформирована 23 декабря 2025 года и подписана усиленной квалифицированной электронной подписью. Актуальный статус всегда можно проверить в сводном реестре лицензий по номеру.</p>
-    </div>
-
-    <a class="doc-preview" href="assets/docs/licence-extract.pdf" target="_blank" rel="noopener" aria-label="Открыть выписку из реестра лицензий в PDF">
-      <img src="assets/img/licence-preview.jpg" alt="Первая страница выписки из реестра лицензий" width="1000" height="877" loading="lazy">
-      <span>Выписка из реестра лицензий, 3 страницы</span>
-    </a>
+<section class="section page-body news">
+  <div class="container">
+    <div class="news-filter" role="tablist" aria-label="Тема" data-news-filter></div>
+    <div class="news-feed" data-news-feed></div>
+    <p class="news-empty" data-news-empty hidden>По этой теме записей пока нет.</p>
   </div>
 </section>
 </main>
@@ -96,6 +78,8 @@
   <a class="btn btn-primary" href="https://yandex.ru/business/widget/request/company/144063589817" target="_blank" rel="noopener">Записаться</a>
 </div>
 
+<script src="js/news-data.js"></script>
 <script src="js/page.js" defer></script>
+<script src="js/news.js" defer></script>
 </body>
 </html>

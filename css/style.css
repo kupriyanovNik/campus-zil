@@ -611,3 +611,53 @@ a.contact-value:hover { color: var(--blue); }
   .compare-row .is-us::before { content: "Кампус Зил: "; position: static; inset: auto; background: none; }
   .about-cta .btn { width: 100%; }
 }
+
+/* ---------- Новости ---------- */
+.news-meta { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 14px; font-size: 0.92rem; color: var(--ink-3); }
+.news-meta time { font-variant-numeric: tabular-nums; }
+.news-tag { display: inline-flex; align-items: center; gap: 6px; padding: 3px 10px 3px 6px; border-radius: 999px; border: 1px solid rgba(20, 33, 61, 0.25); color: var(--ink-2); font-weight: 500; }
+.news-tag img { width: 18px; height: 18px; }
+
+.news-filter { display: flex; flex-wrap: wrap; gap: 4px; padding: 4px; margin-bottom: 32px; border: var(--line) solid var(--ink); border-radius: 16px; background: var(--paper); }
+.news-filter button { font: inherit; font-weight: 600; padding: 8px 14px; border-radius: 999px; border: 0; background: transparent; color: var(--ink); cursor: pointer; }
+.news-filter button:hover { background: rgba(20, 33, 61, 0.06); }
+.news-filter button[aria-selected="true"] { background: var(--zil); }
+
+.news-feed { display: grid; gap: 20px; max-width: 760px; }
+.news-post { background: var(--paper); border: var(--line) solid var(--ink); border-radius: var(--radius); padding: 24px 28px 28px; scroll-margin-top: 90px; }
+.news-post h2 { font-size: 1.35rem; margin-top: 12px; }
+.news-image { margin-top: 18px; border: var(--line) solid var(--ink); border-radius: 10px; width: 100%; max-height: 460px; object-fit: cover; }
+.news-gallery { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 10px; margin-top: 18px; }
+.news-gallery img { aspect-ratio: 3 / 4; object-fit: cover; border: var(--line) solid var(--ink); border-radius: 10px; }
+.news-gallery img:only-child { grid-column: 1 / -1; aspect-ratio: 16 / 9; }
+.news-body { margin-top: 16px; color: var(--ink-2); }
+.news-body p + p, .news-body ul + p, .news-body p + ul { margin-top: 12px; }
+.news-body ul { margin: 0; padding-left: 1.2em; }
+.news-body li + li { margin-top: 4px; }
+.news-author { font-weight: 600; color: var(--ink); }
+.news-link a { color: var(--ink); font-weight: 600; }
+.news-video { margin-top: 18px; }
+.news-video video { width: 100%; border: var(--line) solid var(--ink); border-radius: 10px; background: var(--ink); aspect-ratio: 16 / 9; }
+.news-video span { display: block; margin-top: 6px; font-size: 0.88rem; color: var(--ink-3); }
+.news-empty { color: var(--ink-2); }
+
+.news-home { border-top: var(--line) solid var(--ink); }
+.news-home-head { display: flex; align-items: center; justify-content: space-between; gap: 16px; max-width: none; }
+.news-cards { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 20px; }
+.news-card { display: flex; flex-direction: column; background: var(--paper); border: var(--line) solid var(--ink); border-radius: var(--radius); overflow: hidden; text-decoration: none; color: var(--ink); transition: transform var(--t-fast) var(--ease-out); }
+.news-card:hover { transform: translateY(-2px); color: var(--ink); }
+.news-card-img { width: 100%; aspect-ratio: 16 / 10; object-fit: cover; border-bottom: var(--line) solid var(--ink); }
+.news-card-icon { aspect-ratio: 16 / 10; display: grid; place-items: center; background: var(--zil); border-bottom: var(--line) solid var(--ink); }
+.news-card-icon img { width: 56px; height: 56px; }
+.news-card-body { padding: 18px 20px 22px; display: flex; flex-direction: column; gap: 10px; }
+.news-card h3 { font-size: 1.1rem; }
+.news-card p { color: var(--ink-2); font-size: 0.95rem; }
+
+@media (max-width: 1080px) { .news-cards { grid-template-columns: repeat(2, minmax(0, 1fr)); } .news-cards .news-card:nth-child(3) { display: none; } }
+@media (max-width: 600px) {
+  .news-cards { grid-template-columns: 1fr; }
+  .news-cards .news-card:nth-child(3) { display: flex; }
+  .news-home-head { flex-direction: column; align-items: flex-start; }
+  .news-post { padding: 18px 18px 22px; }
+  .news-gallery { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 6px; }
+}
