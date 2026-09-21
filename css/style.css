@@ -289,9 +289,17 @@ strong { font-weight: 600; }
 .teacher-list li { display: grid; grid-template-columns: 72px 1fr; gap: 18px; align-items: start; padding: 22px 0; border-top: 1px solid rgba(20, 33, 61, 0.18); }
 .teacher-list li:first-child { grid-column: 1 / -1; grid-template-columns: 112px 1fr; }
 .teacher-list li:first-child p { max-width: 40em; }
-.teacher-photo { width: 112px; height: 112px; object-fit: cover; border-radius: 12px; border: var(--line) solid var(--ink); }
-.teacher-icon { width: 72px; height: 72px; border-radius: 12px; border: var(--line) solid var(--ink); background: var(--paper); display: grid; place-items: center; }
-.teacher-icon img { width: 40px; height: 40px; }
+.avatar { position: relative; display: block; width: 72px; height: 72px; }
+.teacher-list li:first-child .avatar { width: 112px; height: 112px; }
+.avatar-photo { width: 100%; height: 100%; object-fit: cover; border-radius: 12px; border: var(--line) solid var(--ink); }
+.avatar-initials {
+  display: grid; place-items: center; width: 100%; height: 100%; border-radius: 12px; border: var(--line) solid var(--ink);
+  background: var(--zil); font-family: var(--font-display); font-weight: 700; font-size: 1.25rem; letter-spacing: -0.01em;
+}
+.avatar-badge {
+  position: absolute; right: -10px; bottom: -10px; width: 34px; height: 34px; padding: 4px;
+  background: var(--paper); border: var(--line) solid var(--ink); border-radius: 9px;
+}
 .teacher-list p { color: var(--ink-2); margin-top: 6px; }
 /* ---------- Gallery / carousel ---------- */
 .gallery .section-head { margin-bottom: 24px; }
@@ -398,9 +406,9 @@ strong { font-weight: 600; }
   .robotics-photo img { aspect-ratio: 4 / 3; }
   .contacts-grid { grid-template-columns: 1fr; }
   .teacher-list { grid-template-columns: 1fr; }
-  .teacher-list li, .teacher-list li:first-child { grid-template-columns: 64px 1fr; gap: 14px; }
-  .teacher-photo { width: 64px; height: 64px; }
-  .teacher-icon { width: 64px; height: 64px; }
+  .teacher-list li, .teacher-list li:first-child { grid-template-columns: 64px 1fr; gap: 16px; }
+  .avatar, .teacher-list li:first-child .avatar { width: 64px; height: 64px; }
+  .avatar-initials { font-size: 1.1rem; }
 
   .timetable { display: none; }
   .day-tabs { display: flex; }
