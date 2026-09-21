@@ -5,13 +5,13 @@
 :root {
   --paper: #ffffff;
   --paper-2: #f6f7fb;
-  --grid: rgba(20, 33, 61, 0.08);
+  --grid: rgba(20, 33, 61, 0.055);
   --ink: #14213d;
   --ink-2: #3b4664;
   --ink-3: #6b7390;
   --zil: #ffc629;
   --zil-deep: #e5ab00;
-  --zil-grid: rgba(20, 33, 61, 0.12);
+  --zil-grid: rgba(20, 33, 61, 0.085);
   --blue: #2457f5;
   --blue-soft: #e4ebff;
   --red: #e5484d;
@@ -213,8 +213,8 @@ strong { font-weight: 600; }
 .robotics {
   background-color: var(--ink); color: #fff;
   background-image:
-    linear-gradient(rgba(255, 255, 255, 0.07) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(255, 255, 255, 0.07) 1px, transparent 1px);
+    linear-gradient(rgba(255, 255, 255, 0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
   background-size: var(--cell) var(--cell);
   border-top: var(--line) solid var(--ink); border-bottom: var(--line) solid var(--ink);
 }
