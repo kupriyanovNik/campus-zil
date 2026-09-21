@@ -78,14 +78,34 @@
   /* ---------- Доска стикеров в hero ---------- */
 
   const boardBottom = $('[data-board-bottom]');
-  const STYLES = ['', 'is-ink', '', 'is-blue', '', 'is-ink', 'is-blue', '', 'is-ink', '', 'is-blue'];
-  const ROTS = [-2, 3, -3, 2, 3, -2, 2, -3, 4, -2, 2];
+  // Коллаж на 12‑колоночной сетке (десктоп): фото робототехники занимает
+  // колонки 1–6 в рядах 1–3, фото шахмат — колонки 7–12 в рядах 5–7.
+  // js — justify-self, чтобы длинные стикеры вылезали внутрь доски, а не за край.
+  const LAYOUT = {
+    chess:        { col: '7 / 13', row: 1,  js: 'end',    rot: 3,  cls: 'is-ink' },
+    school:       { col: '7 / 13', row: 2,  js: 'end',    rot: -2, cls: '',        ml: '-16%' },
+    'eng-native': { col: '7 / 13', row: 3,  js: 'center', rot: 2,  cls: 'is-blue', ml: '-6%' },
+    'eng-draw':   { col: '7 / 13', row: 5,  js: 'end',    rot: -3, cls: 'is-ink' },
+    olymp:        { col: '5 / 13', row: 6,  js: 'start',  rot: 2,  cls: 'is-blue', ml: '2%' },
+    robotics:     { col: '1 / 7',  row: 8,  js: 'start',  rot: -2, cls: '',        ml: '3%',  mt: '-12px' },
+    '3d':         { col: '1 / 9',  row: 9,  js: 'end',    rot: -2, cls: '' },
+    arduino:      { col: '1 / 7',  row: 10, js: 'start',  rot: 3,  cls: 'is-ink',  ml: '6%' },
+    tv:           { col: '1 / 8',  row: 11, js: 'end',    rot: -2, cls: '',        mt: '4px' },
+    early:        { col: '1 / 9',  row: 12, js: 'center', rot: 2,  cls: 'is-blue' },
+  };
   COURSES.filter(c => c.board).forEach((c, i) => {
+    const L = LAYOUT[c.id] || { col: 'auto', row: 'auto', js: 'center', rot: 0, cls: '' };
     const s = document.createElement('span');
-    s.className = `sticker ${STYLES[i % STYLES.length]}`;
+    s.className = `sticker ${L.cls}`;
     s.dataset.id = c.id;
-    s.style.setProperty('--r', `${ROTS[i % ROTS.length]}deg`);
+    s.style.setProperty('--r', `${L.rot}deg`);
     s.style.setProperty('--i', i);
+    s.style.setProperty('--js', L.js);
+    s.style.setProperty('--col', L.col);
+    s.style.setProperty('--row', L.row);
+    if (L.ml) s.style.setProperty('--ml', L.ml);
+    if (L.mt) s.style.setProperty('--mt', L.mt);
+    s.style.order = i + 1;
     s.innerHTML = `<img class="sticker-icon" src="assets/icons/${c.id}.svg" alt="" width="20" height="20">${c.boardLabel}<small>${c.minAge}+</small>`;
     boardBottom.appendChild(s);
   });
