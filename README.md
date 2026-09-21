@@ -7,6 +7,7 @@
 
 ```
 index.html        — лендинг, все секции
+about.html        — страница «О центре»: кто мы, сравнение со школой, направления, клуб
 licence.html      — страница «Лицензия» (реквизиты + выписка из реестра)
 vacancies.html    — страница «Вакансии»
 css/style.css     — стили (дизайн‑система «Инженерная тетрадь»)
@@ -62,7 +63,7 @@ node docs/overflow-check.mjs
 
 Иконки направлений и часть фотографий сделаны через Higgsfield CLI, скрипты
 и промпты лежат в `docs/generation/`. Настоящие фото с сайта центра:
-`robotics-*.jpg`, `chess-*.jpg`, `english.jpg`, `calligraphy.jpg`, `otto.jpg`, `teacher-vinogradov.jpg`.
+`robotics-*.jpg`, `chess-*.jpg`, `english.jpg`, `calligraphy.jpg`, `otto.jpg`, `teacher-vinogradov.jpg`, `about-*.jpg`.
 Сгенерированные: `school`, `math`, `3d`, `arduino`, `tv`, `early`, `engineer`,
 `reading`, `games-dev`, `eng-start`. Галерея «Как проходят занятия» использует
 только настоящие снимки.
