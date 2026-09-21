@@ -81,17 +81,19 @@
   // Коллаж на 12‑колоночной сетке (десктоп): фото робототехники занимает
   // колонки 1–6 в рядах 1–3, фото шахмат — колонки 7–12 в рядах 5–7.
   // js — justify-self, чтобы длинные стикеры вылезали внутрь доски, а не за край.
+  // Две спокойные группы: пять стикеров справа от первого фото (выровнены
+  // по правому краю), пять слева от второго (по левому). Наклон чередуется.
   const LAYOUT = {
-    chess:        { col: '7 / 13', row: 1,  js: 'end',    rot: 3,  cls: 'is-ink' },
-    school:       { col: '7 / 13', row: 2,  js: 'end',    rot: -2, cls: '',        ml: '-16%' },
-    'eng-native': { col: '7 / 13', row: 3,  js: 'center', rot: 2,  cls: 'is-blue', ml: '-6%' },
-    'eng-draw':   { col: '7 / 13', row: 5,  js: 'end',    rot: -3, cls: 'is-ink' },
-    olymp:        { col: '5 / 13', row: 6,  js: 'start',  rot: 2,  cls: 'is-blue', ml: '2%' },
-    robotics:     { col: '1 / 7',  row: 8,  js: 'start',  rot: -2, cls: '',        ml: '3%',  mt: '-12px' },
-    '3d':         { col: '1 / 9',  row: 9,  js: 'end',    rot: -2, cls: '' },
-    arduino:      { col: '1 / 7',  row: 10, js: 'start',  rot: 3,  cls: 'is-ink',  ml: '6%' },
-    tv:           { col: '1 / 8',  row: 11, js: 'end',    rot: -2, cls: '',        mt: '4px' },
-    early:        { col: '1 / 9',  row: 12, js: 'center', rot: 2,  cls: 'is-blue' },
+    chess:        { col: '7 / 13', row: 1,  js: 'end',   rot: 2,  cls: 'is-ink' },
+    school:       { col: '7 / 13', row: 2,  js: 'end',   rot: -1.5, cls: '' },
+    'eng-native': { col: '7 / 13', row: 3,  js: 'end',   rot: 1.5, cls: 'is-blue' },
+    'eng-draw':   { col: '7 / 13', row: 4,  js: 'end',   rot: -2, cls: '' },
+    olymp:        { col: '6 / 13', row: 5,  js: 'end',   rot: 1.5, cls: 'is-ink' },
+    robotics:     { col: '1 / 7',  row: 8,  js: 'start', rot: -2, cls: '' },
+    '3d':         { col: '1 / 8',  row: 9,  js: 'start', rot: 1.5, cls: 'is-blue' },
+    arduino:      { col: '1 / 7',  row: 10, js: 'start', rot: -1.5, cls: '' },
+    tv:           { col: '1 / 7',  row: 11, js: 'start', rot: 2,  cls: 'is-ink' },
+    early:        { col: '1 / 8',  row: 12, js: 'start', rot: -1.5, cls: '' },
   };
   COURSES.filter(c => c.board).forEach((c, i) => {
     const L = LAYOUT[c.id] || { col: 'auto', row: 'auto', js: 'center', rot: 0, cls: '' };
