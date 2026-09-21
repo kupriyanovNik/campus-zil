@@ -311,7 +311,7 @@
   });
   nav.addEventListener('click', e => { if (e.target.closest('a')) closeNav(); });
   document.addEventListener('keydown', e => { if (e.key === 'Escape') closeNav(); });
-  window.matchMedia('(min-width: 901px)').addEventListener('change', e => { if (e.matches) closeNav(); });
+  window.matchMedia('(min-width: 1101px)').addEventListener('change', e => { if (e.matches) closeNav(); });
 
   /* ---------- Год ---------- */
   $('[data-year]').textContent = String(new Date().getFullYear());

@@ -41,3 +41,14 @@ python3 -m http.server 8765
 
 Любой статический хостинг: Vercel, Netlify, GitHub Pages, папка на текущем хостинге.
 Заявка на пробный урок ведёт на виджет Яндекс Бизнеса (как на старом сайте).
+
+## Проверка вёрстки
+
+`docs/overflow-check.mjs` прогоняет страницу по 18 ширинам экрана (320–1920 px)
+и печатает элементы, которые вылезают за край окна, за границы hero или своей
+карточки. Нужен пакет playwright с браузером Chromium:
+
+```
+npm i -D playwright && npx playwright install chromium
+node docs/overflow-check.mjs
+```
