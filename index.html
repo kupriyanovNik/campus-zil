@@ -9,7 +9,7 @@ OWN-WORLD: белый лист с клеткой 24px, целые поля жё�
 STORY: родитель за секунды видит, что есть для возраста его ребёнка, когда и почём,
 и записывается на бесплатный пробный урок.
 FIRST VIEWPORT: жёлтое поле; слева заголовок, подзаголовок и кнопка записи;
-справа доска со «стикерами» курсов и одной фотографией, которая раскладывается при загрузке.
+справа облако «стикеров» всех направлений с иконками, раскладывается при загрузке.
 FORM: одностраничник; подпись — доска стикеров в hero и фильтр по возрасту в сетке курсов.
 -->
 <meta charset="utf-8">
@@ -68,17 +68,7 @@ FORM: одностраничник; подпись — доска стикеро
       </div>
     </div>
 
-    <div class="hero-board" aria-hidden="true">
-      <figure class="board-photo">
-        <img src="assets/img/robotics-boy.jpg" alt="" width="1024" height="1024" fetchpriority="high">
-        <figcaption>Робототехника, 4+</figcaption>
-      </figure>
-      <figure class="board-photo is-second">
-        <img src="assets/img/chess-class.jpg" alt="" width="1000" height="1000" fetchpriority="high">
-        <figcaption>Шахматы, 4+</figcaption>
-      </figure>
-      <div class="board-bottom" data-board-bottom></div>
-    </div>
+    <div class="hero-board" aria-hidden="true" data-board></div>
   </div>
 </section>
 

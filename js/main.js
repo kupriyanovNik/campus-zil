@@ -8,24 +8,24 @@
 
   // minAge / maxAge — включительно. days — короткие метки для карточки.
   const COURSES = [
-    { id: 'robotics', cat: 'tech', title: 'Робототехника', minAge: 4, maxAge: 14, price: '9 600 ₽', per: 'в месяц', format: '8 занятий по 60 мин', days: ['Пн', 'Вт', 'Чт', 'Сб'], photo: 'assets/img/robotics-controller.jpg', desc: 'Авторская программа: сборка по чертежу, механизмы, управление, а с 12 лет программирование и электроника.', board: true, boardLabel: 'Робототехника' },
-    { id: 'chess', cat: 'games', title: 'Шахматы', minAge: 4, maxAge: 14, price: '8 800 ₽', per: 'в месяц', format: '8 занятий по 60 мин', days: ['Пн', 'Пт'], photo: 'assets/img/chess-class.jpg', desc: 'От правил до турниров.', board: true, boardLabel: 'Шахматы' },
-    { id: 'school', cat: 'study', title: 'Подготовка к школе', photo: 'assets/img/school.jpg', minAge: 5, maxAge: 7, price: '13 000 ₽', per: 'в месяц', format: '24 занятия, будни 13:30–15:30 и суббота', desc: 'Математика, русский язык, чтение. Вариант с сопровождением из сада или школы: 15 000 ₽ за 48 занятий.', days: ['Пн–Пт', 'Сб'], board: true, boardLabel: 'Подготовка к школе' },
-    { id: 'eng-native', cat: 'lang', title: 'Английский с носителем', minAge: 5, maxAge: 14, price: '12 600 ₽', per: 'в месяц', format: '8 занятий по 45 мин', photo: 'assets/img/english.jpg', desc: 'Занятия ведёт носитель британского английского. Разговорные группы по воскресеньям: 8+ в 12:00 (1 500 ₽ за занятие) и 12+ в 11:00 (2 000 ₽).', days: ['Вс'], board: true, boardLabel: 'Английский' },
+    { id: 'robotics', cat: 'tech', title: 'Робототехника', minAge: 4, maxAge: 14, price: '9 600 ₽', per: 'в месяц', format: '8 занятий по 60 мин', days: ['Пн', 'Вт', 'Чт', 'Сб'], photo: 'assets/img/robotics-controller.jpg', desc: 'Авторская программа: сборка по чертежу, механизмы, управление, а с 12 лет программирование и электроника.' },
+    { id: 'chess', cat: 'games', title: 'Шахматы', minAge: 4, maxAge: 14, price: '8 800 ₽', per: 'в месяц', format: '8 занятий по 60 мин', days: ['Пн', 'Пт'], photo: 'assets/img/chess-class.jpg', desc: 'От правил до турниров.' },
+    { id: 'school', cat: 'study', title: 'Подготовка к школе', photo: 'assets/img/school.jpg', minAge: 5, maxAge: 7, price: '13 000 ₽', per: 'в месяц', format: '24 занятия, будни 13:30–15:30 и суббота', desc: 'Математика, русский язык, чтение. Вариант с сопровождением из сада или школы: 15 000 ₽ за 48 занятий.', days: ['Пн–Пт', 'Сб'] },
+    { id: 'eng-native', cat: 'lang', title: 'Английский с носителем', minAge: 5, maxAge: 14, price: '12 600 ₽', per: 'в месяц', format: '8 занятий по 45 мин', photo: 'assets/img/english.jpg', desc: 'Занятия ведёт носитель британского английского. Разговорные группы по воскресеньям: 8+ в 12:00 (1 500 ₽ за занятие) и 12+ в 11:00 (2 000 ₽).', days: ['Вс'] },
     { id: 'eng-start', cat: 'lang', title: 'Английский для начинающих', photo: 'assets/img/eng-start.jpg', minAge: 3, maxAge: 6, price: '9 600 ₽', per: 'в месяц', format: '8 занятий по 30 мин', desc: 'Английский для самых маленьких, короткие занятия по 30 минут.' },
-    { id: 'eng-draw', cat: 'lang', title: 'Рисуем и изучаем английский', minAge: 3, maxAge: 7, price: '9 600 ₽', per: 'в месяц', format: '8 занятий по 45 мин', desc: 'Рисование и английский на одном занятии.', board: true, boardLabel: 'Рисуем по‑английски' },
+    { id: 'eng-draw', cat: 'lang', title: 'Рисуем и изучаем английский', minAge: 3, maxAge: 7, price: '9 600 ₽', per: 'в месяц', format: '8 занятий по 45 мин', desc: 'Рисование и английский на одном занятии.' },
     { id: 'math', cat: 'study', title: 'Математика', photo: 'assets/img/math.jpg', minAge: 5, maxAge: 10, price: '6 900 ₽', per: 'в месяц', format: '8 занятий по 30 мин', desc: 'Короткие занятия по 30 минут. Арифметика для младших школьников: 8 занятий по 45 минут за ту же цену.' },
-    { id: 'olymp', cat: 'study', title: 'Олимпиадная математика', minAge: 7, maxAge: 14, price: '6 900 ₽', per: 'в месяц', format: '8 занятий по 45 мин', desc: 'Нестандартные задачи и подготовка к олимпиадам.', board: true, boardLabel: 'Олимпиадная математика' },
-    { id: '3d', cat: 'tech', title: '3D‑печать и ИИ', photo: 'assets/img/3d.jpg', minAge: 9, maxAge: 14, price: '9 500 ₽', per: 'в месяц', format: '8 занятий по 60 мин', desc: 'Моделируем, печатаем, используем нейросети как инструмент. Печать оплачивается отдельно: 7 ₽ за грамм.', board: true, boardLabel: '3D‑печать и ИИ' },
+    { id: 'olymp', cat: 'study', title: 'Олимпиадная математика', minAge: 7, maxAge: 14, price: '6 900 ₽', per: 'в месяц', format: '8 занятий по 45 мин', desc: 'Нестандартные задачи и подготовка к олимпиадам.' },
+    { id: '3d', cat: 'tech', title: '3D‑печать и ИИ', photo: 'assets/img/3d.jpg', minAge: 9, maxAge: 14, price: '9 500 ₽', per: 'в месяц', format: '8 занятий по 60 мин', desc: 'Моделируем, печатаем, используем нейросети как инструмент. Печать оплачивается отдельно: 7 ₽ за грамм.' },
     { id: 'engineer', cat: 'tech', title: 'Юный инженер', photo: 'assets/img/engineer.jpg', minAge: 10, maxAge: 14, price: 'по запросу', per: '', format: 'вторник и четверг, 17:00', days: ['Вт', 'Чт'], desc: 'Свои модели от идеи до 3D‑печати: эскиз, CAD, прототип.' },
     { id: 'cad', cat: 'tech', title: 'Штангенциркуль и CAD', minAge: 8, maxAge: 14, price: '12 600 ₽', per: 'в месяц', format: '8 занятий по 60 мин', desc: 'Измеряем настоящие детали и переносим их в 3D‑модель. Нужно уверенно владеть компьютером. Филамент: 800 ₽ в месяц.' },
     { id: 'games-dev', cat: 'tech', title: 'Информатика: создание игр', photo: 'assets/img/games-dev.jpg', minAge: 10, maxAge: 14, price: '12 600 ₽', per: 'в месяц', format: '8 занятий по 60 мин', desc: 'Пишем свои игры на занятиях по информатике.' },
-    { id: 'arduino', cat: 'tech', title: 'Arduino и интернет вещей', photo: 'assets/img/arduino.jpg', minAge: 12, maxAge: 14, price: '10 000 ₽', per: 'в месяц', format: '8 занятий по 60 мин', desc: 'Собираем устройства на Arduino и подключаем их к интернету.', board: true, boardLabel: 'Arduino' },
+    { id: 'arduino', cat: 'tech', title: 'Arduino и интернет вещей', photo: 'assets/img/arduino.jpg', minAge: 12, maxAge: 14, price: '10 000 ₽', per: 'в месяц', format: '8 занятий по 60 мин', desc: 'Собираем устройства на Arduino и подключаем их к интернету.' },
     { id: 'otto', cat: 'tech', title: 'Мини‑робот Отто', minAge: 7, maxAge: 12, price: '9 500 ₽', per: 'за курс', format: '5 занятий по 60 мин, робот остаётся у ребёнка', photo: 'assets/img/otto.jpg', desc: 'Собираем и программируем шагающего робота. В цену входит сам робот.' },
-    { id: 'tv', cat: 'games', title: 'Телестудия', photo: 'assets/img/tv.jpg', minAge: 9, maxAge: 14, price: 'по запросу', per: '', format: 'группы по договорённости', desc: 'Съёмка в студии с хромакеем, работа в кадре и за камерой.', board: true, boardLabel: 'Телестудия' },
+    { id: 'tv', cat: 'games', title: 'Телестудия', photo: 'assets/img/tv.jpg', minAge: 9, maxAge: 14, price: 'по запросу', per: '', format: 'группы по договорённости', desc: 'Съёмка в студии с хромакеем, работа в кадре и за камерой.' },
     { id: 'reading', cat: 'study', title: 'Скорочтение', photo: 'assets/img/reading.jpg', minAge: 6, maxAge: 14, price: '6 900 ₽', per: 'в месяц', format: '8 занятий по 45 мин в группе', desc: 'Индивидуальный формат: 16 000 ₽ в месяц за 8 занятий.' },
     { id: 'callig', cat: 'games', title: 'Каллиграфия', minAge: 6, maxAge: 14, price: '6 900 ₽', per: 'в месяц', format: '8 занятий по 45 мин в группе', photo: 'assets/img/calligraphy.jpg', desc: 'Ставим почерк. Индивидуально: 16 000 ₽ в месяц за 8 занятий.' },
-    { id: 'early', cat: 'study', title: 'Развивающие группы', photo: 'assets/img/early.jpg', minAge: 3, maxAge: 5, price: 'по запросу', per: '', format: 'мини‑группы для самых маленьких', desc: 'Речь, моторика, первые математические представления, творчество.', board: true, boardLabel: 'Развивающие группы' },
+    { id: 'early', cat: 'study', title: 'Развивающие группы', photo: 'assets/img/early.jpg', minAge: 3, maxAge: 5, price: 'по запросу', per: '', format: 'мини‑группы для самых маленьких', desc: 'Речь, моторика, первые математические представления, творчество.' },
     { id: 'oge', cat: 'study', title: 'Подготовка к ОГЭ и ЕГЭ', minAge: 12, maxAge: 14, price: '12 600 ₽', per: 'в месяц', format: '8 занятий по 60 мин', desc: 'ОГЭ с 12 лет, ЕГЭ с 14 лет.' },
     { id: 'help', cat: 'study', title: 'Помощь в учёбе', minAge: 6, maxAge: 14, price: '3 000 ₽', per: 'за занятие', format: '60 мин индивидуально', desc: 'Индивидуально по школьной программе.' },
   ];
@@ -77,39 +77,22 @@
 
   /* ---------- Доска стикеров в hero ---------- */
 
-  const boardBottom = $('[data-board-bottom]');
-  // Коллаж на 12‑колоночной сетке (десктоп): фото робототехники занимает
-  // колонки 1–6 в рядах 1–3, фото шахмат — колонки 7–12 в рядах 5–7.
-  // js — justify-self, чтобы длинные стикеры вылезали внутрь доски, а не за край.
-  // Раскладка доски: короткие ряды по одному‑два стикера со сдвигами,
-  // как кирпичная кладка, наклон ±2°. col/row — ячейки 12‑колоночной сетки.
-  const LAYOUT = {
-    chess:        { col: '9 / 13', row: 1,  js: 'end',    rot: 2 },
-    school:       { col: '7 / 13', row: 2,  js: 'end',    rot: -1.5, cls: 'is-ink' },
-    'eng-native': { col: '7 / 11', row: 3,  js: 'start',  rot: 1.5,  cls: 'is-blue', ml: '6%' },
-    'eng-draw':   { col: '7 / 13', row: 4,  js: 'end',    rot: -2 },
-    olymp:        { col: '6 / 13', row: 5,  js: 'center', rot: 1.5,  cls: 'is-ink', ml: '-6%' },
-    robotics:     { col: '1 / 6',  row: 8,  js: 'start',  rot: -2,   ml: '4%' },
-    '3d':         { col: '1 / 8',  row: 9,  js: 'end',    rot: 1.5,  cls: 'is-blue' },
-    arduino:      { col: '1 / 5',  row: 10, js: 'start',  rot: -1.5 },
-    tv:           { col: '3 / 8',  row: 11, js: 'center', rot: 2,    cls: 'is-ink' },
-    early:        { col: '1 / 8',  row: 12, js: 'start',  rot: -1.5, ml: '2%' },
+  const boardEl = $('[data-board]');
+  const SHORT = {
+    'eng-native': 'Английский с носителем', 'eng-start': 'Английский 3+', 'eng-draw': 'Рисуем по‑английски',
+    olymp: 'Олимпиадная математика', '3d': '3D‑печать и ИИ', engineer: 'Юный инженер', cad: 'Штангенциркуль и CAD',
+    'games-dev': 'Создание игр', arduino: 'Arduino', otto: 'Робот Отто', tv: 'Телестудия', reading: 'Скорочтение',
+    callig: 'Каллиграфия', early: 'Развивающие группы', oge: 'ОГЭ и ЕГЭ', help: 'Помощь в учёбе',
   };
-  COURSES.filter(c => c.board).forEach((c, i) => {
-    const L = LAYOUT[c.id] || { col: 'auto', row: 'auto', js: 'center', rot: 0 };
+  const STYLES = ['', 'is-ink', '', 'is-blue', '', '', 'is-ink', '', 'is-blue', '', 'is-ink', '', '', 'is-blue', '', 'is-ink', '', 'is-blue', '', ''];
+  COURSES.forEach((c, i) => {
     const s = document.createElement('span');
-    s.className = `sticker ${L.cls || ''}`;
+    s.className = `sticker ${STYLES[i % STYLES.length]}`;
     s.dataset.id = c.id;
-    s.style.setProperty('--r', `${L.rot}deg`);
+    s.style.setProperty('--r', `${i % 2 ? 1.5 : -1.5}deg`);
     s.style.setProperty('--i', i);
-    s.style.setProperty('--js', L.js);
-    s.style.setProperty('--col', L.col);
-    s.style.setProperty('--row', L.row);
-    if (L.ml) s.style.setProperty('--ml', L.ml);
-    if (L.mt) s.style.setProperty('--mt', L.mt);
-    s.style.order = i + 1;
-    s.innerHTML = `<img class="sticker-icon" src="assets/icons/${c.id}.svg" alt="" width="20" height="20">${c.boardLabel}<small>${c.minAge}+</small>`;
-    boardBottom.appendChild(s);
+    s.innerHTML = `<img class="sticker-icon" src="assets/icons/${c.id}.svg" alt="" width="20" height="20">${SHORT[c.id] || c.boardLabel || c.title}<small>${c.minAge}+</small>`;
+    boardEl.appendChild(s);
   });
 
   /* ---------- Возрастные чипы (две группы, синхронные) ---------- */
