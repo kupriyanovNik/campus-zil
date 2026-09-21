@@ -479,3 +479,64 @@ a.contact-value:hover { color: var(--blue); }
   .carousel-slide figure { transform: none; opacity: 1; }
   .carousel-dots button::after { animation: none !important; transform: scaleX(1); }
 }
+
+/* ==========================================================================
+   Внутренние страницы: лицензия, вакансии
+   ========================================================================== */
+.page-hero {
+  background-color: var(--zil);
+  background-image:
+    linear-gradient(var(--zil-grid) 1px, transparent 1px),
+    linear-gradient(90deg, var(--zil-grid) 1px, transparent 1px);
+  background-size: var(--cell) var(--cell);
+  border-bottom: var(--line) solid var(--ink);
+  padding-block: clamp(32px, 4vw, 56px) clamp(36px, 5vw, 64px);
+}
+.crumbs { font-size: 0.95rem; color: var(--ink-2); margin-bottom: 16px; }
+.crumbs a { color: var(--ink); font-weight: 500; text-decoration: none; }
+.crumbs a:hover { text-decoration: underline; }
+.page-hero h1 { font-size: clamp(1.8rem, 1rem + 2.8vw, 3rem); max-width: 18em; }
+.page-lead { margin-top: 18px; font-size: 1.12rem; color: var(--ink-2); max-width: 36em; }
+.page-body { padding-block: clamp(40px, 6vw, 80px); }
+.page-grid { display: grid; grid-template-columns: minmax(0, 7fr) minmax(0, 5fr); gap: clamp(32px, 5vw, 72px); align-items: start; }
+
+.fact-list { margin: 0; border-top: var(--line) solid var(--ink); }
+.fact-list > div { display: grid; grid-template-columns: 220px 1fr; gap: 16px; padding: 16px 0; border-bottom: 1px solid rgba(20, 33, 61, 0.18); }
+.fact-list dt { color: var(--ink-3); }
+.fact-list dd { margin: 0; font-weight: 600; }
+.pill { display: inline-block; padding: 4px 12px; border-radius: 999px; border: var(--line) solid var(--ink); font-weight: 600; font-size: 0.95rem; }
+.pill-ok { background: var(--zil); }
+.page-actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 28px; }
+.page-note { margin-top: 16px; font-size: 0.95rem; max-width: 46em; }
+
+.doc-preview { display: block; text-decoration: none; color: var(--ink-2); font-size: 0.95rem; }
+.doc-preview img { border: var(--line) solid var(--ink); border-radius: var(--radius); background: #fff; transform: rotate(-1.5deg); transition: transform var(--t-med) var(--ease-out); }
+.doc-preview:hover img { transform: rotate(0) translateY(-2px); }
+.doc-preview span { display: block; margin-top: 14px; text-align: center; }
+
+.vacancy-list { list-style: none; margin: 0; padding: 0; border-top: var(--line) solid var(--ink); }
+.vacancy { display: grid; grid-template-columns: 44px 1fr auto; gap: 20px; align-items: center; padding: 24px 0; border-bottom: 1px solid rgba(20, 33, 61, 0.18); }
+.vacancy h2 { font-size: 1.25rem; }
+.vacancy p { margin-top: 6px; color: var(--ink-2); max-width: 46em; }
+.vacancy-icon { width: 44px; height: 44px; }
+.vacancy-cta { margin-top: clamp(32px, 5vw, 56px); padding: 28px; border: var(--line) solid var(--ink); border-radius: var(--radius); background: var(--paper); max-width: 46em; }
+.vacancy-cta h2 { font-size: 1.35rem; }
+.vacancy-cta p { margin-top: 12px; }
+.vacancy-cta a { color: var(--ink); font-weight: 600; }
+
+.teachers-hire { margin-top: 24px; color: var(--ink-2); }
+.teachers-hire a { color: var(--ink); font-weight: 600; }
+.contacts-licence { font-size: 0.95rem !important; margin-top: 28px !important; color: var(--ink-2) !important; }
+.contacts-licence a { color: var(--ink); font-weight: 600; }
+
+@media (max-width: 900px) {
+  .page-grid { grid-template-columns: 1fr; }
+  .doc-preview { max-width: 420px; }
+}
+@media (max-width: 600px) {
+  .fact-list > div { grid-template-columns: 1fr; gap: 4px; }
+  .page-actions .btn { width: 100%; }
+  .vacancy { grid-template-columns: 44px 1fr; }
+  .vacancy .btn { grid-column: 2; justify-self: start; }
+  .vacancy-cta { padding: 20px; }
+}
