@@ -1,0 +1,313 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<!--
+THESIS: тетрадь в клетку, на которой инженер чертит план недели ребёнка.
+Отказ от пастельного «детского» шаблона с блобами и одинаковыми карточками.
+OWN-WORLD: белый лист с клеткой 24px, целые поля жёлтого ЗИЛ (#FFC629) и чернил
+(#14213D), синяя чертёжная линия (#2457F5). Unbounded + Golos Text. Обводка вместо теней.
+STORY: родитель за секунды видит, что есть для возраста его ребёнка, когда и почём,
+и записывается на бесплатный пробный урок.
+FIRST VIEWPORT: жёлтое поле; слева заголовок, выбор возраста и кнопка записи;
+справа доска со «стикерами» курсов и одной фотографией, которая раскладывается при загрузке.
+FORM: одностраничник; подпись — фильтр по возрасту, связывающий доску и сетку курсов.
+-->
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Кампус Зил — детский образовательный центр в ЗИЛАРТе</title>
+<meta name="description" content="Робототехника, шахматы, подготовка к школе, английский с носителем и ещё 15 направлений для детей от 3,5 лет. Москва, ЗИЛАРТ, ул. Архитектора Щусева, 1. Первый урок бесплатно.">
+<meta property="og:title" content="Кампус Зил — кружки для детей от 3,5 лет в ЗИЛАРТе">
+<meta property="og:description" content="Робототехника, шахматы, подготовка к школе, английский с носителем. Занятия по 60 минут, мини‑группы, пробный урок бесплатно.">
+<meta property="og:image" content="assets/img/robotics-boy.jpg">
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@500;700;800&family=Golos+Text:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<a class="skip" href="#courses">К направлениям</a>
+
+<header class="site-header" id="top">
+  <div class="container header-row">
+    <a class="brand" href="#top" aria-label="Кампус Зил, на главную">
+      <span class="brand-mark" aria-hidden="true"><svg viewBox="0 0 32 32" width="32" height="32"><rect width="32" height="32" rx="6" fill="#FFC629"/><path d="M9 8h4v7l6-7h5l-7 8 7 8h-5l-6-7v7H9z" fill="#14213D"/></svg></span>
+      <span class="brand-name">Кампус Зил</span>
+    </a>
+    <nav class="nav" id="nav" aria-label="Разделы сайта">
+      <a href="#courses">Направления</a>
+      <a href="#robotics">Робототехника</a>
+      <a href="#schedule">Расписание</a>
+      <a href="#teachers">Преподаватели</a>
+      <a href="#contacts">Контакты</a>
+      <a class="nav-phone" href="tel:+79299579997">+7 929 957‑99‑97</a>
+      <a class="btn btn-primary nav-cta" href="https://yandex.ru/business/widget/request/company/144063589817" target="_blank" rel="noopener">Пробный урок</a>
+    </nav>
+    <a class="header-phone" href="tel:+79299579997" aria-label="Позвонить +7 929 957-99-97">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.8 2z"/></svg>
+    </a>
+    <button class="burger" id="burger" aria-expanded="false" aria-controls="nav" aria-label="Открыть меню">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</header>
+
+<main>
+
+<!-- ===== HERO ===== -->
+<section class="hero" aria-labelledby="hero-title">
+  <div class="container hero-grid">
+    <div class="hero-copy">
+      <p class="hero-place">Москва, ЗИЛАРТ, ул. Архитектора Щусева, 1</p>
+      <h1 id="hero-title">Кружки для детей от&nbsp;3,5 до&nbsp;14 лет рядом с&nbsp;домом</h1>
+      <p class="hero-lead">Робототехника, шахматы, подготовка к&nbsp;школе, английский с&nbsp;носителем и&nbsp;ещё полтора десятка направлений. Занятия по&nbsp;60&nbsp;минут в&nbsp;мини‑группах. Первый урок бесплатно.</p>
+
+      <div class="age-picker" role="group" aria-labelledby="age-label">
+        <p class="age-label" id="age-label">Сколько лет ребёнку?</p>
+        <div class="age-chips" data-age-chips></div>
+        <p class="age-result" data-age-result aria-live="polite">Показаны все направления</p>
+      </div>
+
+      <div class="hero-actions">
+        <a class="btn btn-primary btn-lg" href="https://yandex.ru/business/widget/request/company/144063589817" target="_blank" rel="noopener">Записаться на пробный урок</a>
+        <a class="btn btn-ghost btn-lg" href="tel:+79299579997">Позвонить</a>
+      </div>
+    </div>
+
+    <div class="hero-board" aria-hidden="true">
+      <figure class="board-photo">
+        <img src="assets/img/robotics-boy.jpg" alt="" width="1024" height="1024" fetchpriority="high">
+        <figcaption>робототехника, 4+</figcaption>
+      </figure>
+      <div class="board-side" data-board-side></div>
+      <div class="board-bottom" data-board-bottom></div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== FACTS ===== -->
+<section class="facts" aria-label="Коротко о центре">
+  <div class="container facts-row">
+    <p><strong>Лицензия</strong> на образовательную деятельность</p>
+    <p><strong>Ежедневно</strong> с 9:00 до 21:00</p>
+    <p><strong>60 минут</strong> длится одно занятие</p>
+    <p><strong>Бесплатно</strong> первый пробный урок</p>
+  </div>
+</section>
+
+<!-- ===== COURSES ===== -->
+<section class="section courses" id="courses" aria-labelledby="courses-title">
+  <div class="container">
+    <div class="section-head">
+      <h2 id="courses-title">Направления</h2>
+      <p>Цены указаны за абонемент на месяц, если не сказано иное. Занятия идут круглый год.</p>
+    </div>
+
+    <div class="filters">
+      <div class="seg" role="tablist" aria-label="Категория" data-cat-tabs>
+        <button role="tab" aria-selected="true" data-cat="all">Все</button>
+        <button role="tab" aria-selected="false" data-cat="tech">Техника</button>
+        <button role="tab" aria-selected="false" data-cat="study">Учёба</button>
+        <button role="tab" aria-selected="false" data-cat="lang">Языки</button>
+        <button role="tab" aria-selected="false" data-cat="games">Игры и творчество</button>
+      </div>
+      <div class="filters-age">
+        <span>Возраст:</span>
+        <div class="age-chips age-chips-compact" data-age-chips></div>
+      </div>
+    </div>
+
+    <div class="course-grid" data-course-grid></div>
+    <p class="course-empty" data-course-empty hidden>Для этого возраста в выбранной категории пока нет групп. Позвоните нам, подберём индивидуальный формат.</p>
+  </div>
+</section>
+
+<!-- ===== ROBOTICS ===== -->
+<section class="section robotics" id="robotics" aria-labelledby="robotics-title">
+  <div class="container robotics-grid">
+    <figure class="robotics-photo">
+      <img src="assets/img/robotics-girl.jpg" alt="Девочка собирает робота по схеме, рядом ноутбук с блочным кодом" width="1536" height="1152" loading="lazy">
+    </figure>
+    <div class="robotics-copy">
+      <h2 id="robotics-title">Робототехника, с&nbsp;которой всё началось</h2>
+      <p>Программу придумал Илья Михайлович Виноградов, учитель с&nbsp;29‑летним стажем. Он подобрал конструкторы и&nbsp;задачи под каждый возраст, поэтому ребёнок в&nbsp;4&nbsp;года и&nbsp;подросток в&nbsp;13 занимаются по‑разному, но&nbsp;в&nbsp;одной логике: собрал, запустил, придумал своё.</p>
+
+      <ol class="ladder">
+        <li>
+          <span class="ladder-age">4–7 лет</span>
+          <div><strong>Моторика и&nbsp;сборка по&nbsp;чертежу.</strong> Учимся видеть объёмную модель, собирать по&nbsp;образцу и&nbsp;обязательно добавлять что‑то своё. В&nbsp;конце каждого часа игра со&nbsp;своей моделью.</div>
+        </li>
+        <li>
+          <span class="ladder-age">8–11 лет</span>
+          <div><strong>Механизмы и&nbsp;управление.</strong> Сложные сборки, устройство передач, модели под&nbsp;конкретную задачу. Управление роботом на&nbsp;каждом занятии.</div>
+        </li>
+        <li>
+          <span class="ladder-age">12–14 лет</span>
+          <div><strong>Программирование и&nbsp;электроника.</strong> Микроэлектроника, 3D‑печать нужных деталей, решение инженерных задач.</div>
+        </li>
+      </ol>
+
+      <blockquote class="quote">
+        <p>«Игра с&nbsp;роботами тренирует внимание, усидчивость и&nbsp;умение доводить дело до&nbsp;конца. Каждый ребёнок работает в&nbsp;комфортном темпе, а&nbsp;задания подбираются под&nbsp;его уровень».</p>
+        <cite>Илья Виноградов, автор программы</cite>
+      </blockquote>
+
+      <div class="price-row">
+        <div><span class="price-num">2 000 ₽</span><span class="price-cap">разовое занятие, 1 час</span></div>
+        <div><span class="price-num">6 000 ₽</span><span class="price-cap">абонемент на 4 часа в месяц</span></div>
+        <div><span class="price-num">9 600 ₽</span><span class="price-cap">абонемент на 8 часов в месяц</span></div>
+      </div>
+
+      <p class="robotics-note">Для 7–12 лет идут параллельные курсы: микроэлектроника, 3D‑печать и&nbsp;ИИ, роборука, мини‑робот Отто, Arduino. Можно заниматься два часа подряд и&nbsp;совмещать с&nbsp;другими направлениями.</p>
+      <a class="btn btn-yellow btn-lg" href="tel:+79299579997">Записаться по телефону</a>
+    </div>
+  </div>
+</section>
+
+<!-- ===== SCHEDULE ===== -->
+<section class="section schedule" id="schedule" aria-labelledby="schedule-title">
+  <div class="container">
+    <div class="section-head">
+      <h2 id="schedule-title">Расписание на неделю</h2>
+      <p>Постоянные группы. Индивидуальные занятия, скорочтение, каллиграфия и курсы для 10+ ставим по договорённости. Свободные места уточняйте по телефону.</p>
+    </div>
+
+    <div class="legend" data-legend></div>
+
+    <div class="day-tabs" role="tablist" aria-label="День недели" data-day-tabs></div>
+
+    <div class="timetable" data-timetable role="table" aria-label="Расписание постоянных групп"></div>
+
+    <ul class="day-list" data-day-list></ul>
+  </div>
+</section>
+
+<!-- ===== TEACHERS ===== -->
+<section class="section teachers" id="teachers" aria-labelledby="teachers-title">
+  <div class="container">
+    <div class="section-head">
+      <h2 id="teachers-title">Преподаватели</h2>
+      <p>Небольшая команда, каждый ведёт своё направление от первого занятия до турниров и выпускных проектов.</p>
+    </div>
+    <ul class="teacher-list">
+      <li>
+        <span class="initials" aria-hidden="true">ИВ</span>
+        <div>
+          <h3>Илья Михайлович Виноградов</h3>
+          <p>Робототехника, конструирование, программирование, информатика, телестудия. Автор программы по робототехнике, 29 лет в профессии.</p>
+        </div>
+      </li>
+      <li>
+        <span class="initials" aria-hidden="true">АЧ</span>
+        <div>
+          <h3>Чугреев А. И.</h3>
+          <p>Шахматы. Группы с 4 лет, подготовка к турнирам и внутренние соревнования центра.</p>
+        </div>
+      </li>
+      <li>
+        <span class="initials" aria-hidden="true">B</span>
+        <div>
+          <h3>Busola</h3>
+          <p>Английский язык с носителем. Разговорные группы для 8+ и 12+, английский для детей с 5 лет.</p>
+        </div>
+      </li>
+      <li>
+        <span class="initials" aria-hidden="true">ЮС</span>
+        <div>
+          <h3>Юлия Сергеевна</h3>
+          <p>Английский язык и рисование. Курс «Рисуем и изучаем английский» для самых маленьких.</p>
+        </div>
+      </li>
+      <li>
+        <span class="initials" aria-hidden="true">НБ</span>
+        <div>
+          <h3>Браткова Н. В.</h3>
+          <p>Математика, арифметика, олимпиадная математика, подготовка к школе.</p>
+        </div>
+      </li>
+    </ul>
+  </div>
+</section>
+
+<!-- ===== GALLERY ===== -->
+<section class="section gallery" aria-labelledby="gallery-title">
+  <div class="container">
+    <div class="section-head">
+      <h2 id="gallery-title">Как проходят занятия</h2>
+    </div>
+  </div>
+  <div class="gallery-strip" tabindex="0" aria-label="Фотографии с занятий, листайте горизонтально">
+    <figure><img src="assets/img/robotics-controller.jpg" alt="Мальчик управляет собранной моделью с пульта" loading="lazy" width="1000" height="1000"><figcaption>Робототехника, группа 4+</figcaption></figure>
+    <figure><img src="assets/img/chess-class.jpg" alt="Шахматный класс, дети играют партии на время" loading="lazy" width="1000" height="1000"><figcaption>Шахматы, турнир на время</figcaption></figure>
+    <figure><img src="assets/img/english.jpg" alt="Урок английского с носителем языка у интерактивной доски" loading="lazy" width="1024" height="1024"><figcaption>Английский с носителем</figcaption></figure>
+    <figure><img src="assets/img/calligraphy.jpg" alt="Урок каллиграфии, дети рисуют тушью" loading="lazy" width="960" height="1280"><figcaption>Каллиграфия</figcaption></figure>
+    <figure><img src="assets/img/chess-award.jpg" alt="Мальчик с грамотой после шахматного турнира и два преподавателя" loading="lazy" width="1024" height="1024"><figcaption>Награждение после турнира</figcaption></figure>
+    <figure><img src="assets/img/tv-studio.jpg" alt="Ребёнок в кадре телестудии с зелёным фоном" loading="lazy" width="1024" height="1024"><figcaption>Телестудия, 9+</figcaption></figure>
+  </div>
+</section>
+
+<!-- ===== CONTACTS / CTA ===== -->
+<section class="section contacts" id="contacts" aria-labelledby="contacts-title">
+  <div class="container contacts-grid">
+    <div class="contacts-cta">
+      <h2 id="contacts-title">Приходите на бесплатный пробный урок</h2>
+      <p>Посмотрите центр изнутри, познакомьтесь с преподавателем и попробуйте занятие. Оставьте заявку, мы перезвоним и подберём группу.</p>
+      <div class="hero-actions">
+        <a class="btn btn-ink btn-lg" href="https://yandex.ru/business/widget/request/company/144063589817" target="_blank" rel="noopener">Оставить заявку</a>
+        <a class="btn btn-ghost btn-lg" href="https://t.me/campuszil" target="_blank" rel="noopener">Написать в Telegram</a>
+      </div>
+    </div>
+
+    <dl class="contacts-list">
+      <div>
+        <dt>Адрес</dt>
+        <dd>Москва, ул. Архитектора Щусева, д. 1<br><span class="muted">помещение «Пекарня Буханка», при входе дверь слева, 1 этаж</span><br><a href="https://yandex.ru/maps/?text=Москва, улица Архитектора Щусева, 1" target="_blank" rel="noopener">Открыть в Яндекс Картах</a></dd>
+      </div>
+      <div>
+        <dt>Часы работы</dt>
+        <dd>Ежедневно с 9:00 до 21:00<br><span class="muted">время занятий смотрите в расписании</span></dd>
+      </div>
+      <div>
+        <dt>Телефон</dt>
+        <dd><a href="tel:+79299579997">+7 (929) 957‑99‑97</a></dd>
+      </div>
+      <div>
+        <dt>Почта</dt>
+        <dd><a href="mailto:info@campuszil.com">info@campuszil.com</a></dd>
+      </div>
+      <div>
+        <dt>Мессенджеры</dt>
+        <dd class="socials">
+          <a href="https://t.me/campuszil" target="_blank" rel="noopener">Telegram</a>
+          <a href="https://vk.com/campuszil" target="_blank" rel="noopener">VK</a>
+          <a href="https://max.ru/u/f9LHodD0cOI58ydDmCj5pI-ljFYqhotPa6n236E9zcF99GbGORTSK93aBik" target="_blank" rel="noopener">MAX</a>
+        </dd>
+      </div>
+    </dl>
+  </div>
+</section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="container footer-row">
+    <p>© <span data-year></span> ООО «ЭгоПроф». Образовательный центр «Кампус Зил».</p>
+    <nav aria-label="Дополнительно">
+      <a href="https://campuszil.com/лицензия-на-обучение/" target="_blank" rel="noopener">Лицензия</a>
+      <a href="https://campuszil.com/%d0%b2%d0%b0%d0%ba%d0%b0%d0%bd%d1%81%d0%b8%d0%b8/" target="_blank" rel="noopener">Вакансии</a>
+      <a href="https://school.egoprof.com/?redirect=0" target="_blank" rel="noopener">Кампус онлайн</a>
+      <a href="https://t.me/campuszil" target="_blank" rel="noopener">Telegram</a>
+      <a href="https://vk.com/campuszil" target="_blank" rel="noopener">VK</a>
+    </nav>
+  </div>
+</footer>
+
+<div class="mobile-bar">
+  <a class="btn btn-ghost" href="tel:+79299579997">Позвонить</a>
+  <a class="btn btn-primary" href="https://yandex.ru/business/widget/request/company/144063589817" target="_blank" rel="noopener">Пробный урок</a>
+</div>
+
+<script src="js/main.js" defer></script>
+</body>
+</html>
