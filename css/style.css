@@ -242,10 +242,10 @@ strong { font-weight: 600; }
 .legend span { display: inline-flex; align-items: center; gap: 8px; }
 .legend i { width: 14px; height: 14px; border-radius: 3px; border: var(--line) solid var(--ink); }
 
-.day-tabs { display: none; gap: 6px; margin-bottom: 16px; overflow-x: auto; padding-bottom: 4px; }
+.day-tabs { display: none; gap: 6px; margin-bottom: 16px; }
 .day-tabs button {
-  font: inherit; font-weight: 600; min-width: 48px; height: 40px; padding: 0 12px; border-radius: 999px;
-  border: var(--line) solid var(--ink); background: var(--paper); color: var(--ink); cursor: pointer; flex: none;
+  font: inherit; font-weight: 600; flex: 1 1 0; min-width: 0; height: 40px; padding: 0 4px; border-radius: 999px;
+  border: var(--line) solid var(--ink); background: var(--paper); color: var(--ink); cursor: pointer;
 }
 .day-tabs button[aria-selected="true"] { background: var(--ink); color: #fff; }
 
@@ -447,12 +447,14 @@ a.contact-value:hover { color: var(--blue); }
   body { font-size: 16px; }
   .hero { padding-block: 36px 44px; }
   .header-phone { display: none; }
+  .burger { margin-left: auto; }
   .hero-lead { font-size: 1.05rem; }
   .hero-actions .btn { width: 100%; }
   .hero-actions .btn-ghost { display: none; }
   .btn-lg { padding: 16px 22px; }
   .filters { flex-direction: column; align-items: stretch; }
-  .seg { border-radius: 16px; }
+  .seg { border-radius: 16px; justify-content: center; }
+  .seg button { padding: 8px 12px; }
   .filters-age { align-items: stretch; flex-direction: column; gap: 8px; }
   .course-grid { grid-template-columns: 1fr; gap: 14px; }
   .course h3 { font-size: 1.05rem; }
@@ -463,6 +465,7 @@ a.contact-value:hover { color: var(--blue); }
   .contacts-cta .btn { width: 100%; }
   .contact-card { padding: 4px 20px 20px; }
   .footer-row { flex-direction: column; align-items: flex-start; }
+  .footer-row nav { flex-direction: column; gap: 10px; }
 
   .mobile-bar {
     position: fixed; left: 0; right: 0; bottom: 0; z-index: 45;
@@ -471,7 +474,6 @@ a.contact-value:hover { color: var(--blue); }
     background: var(--paper); border-top: var(--line) solid var(--ink);
   }
   .mobile-bar .btn { padding: 14px 12px; font-size: 0.95rem; }
-  main { padding-bottom: 72px; }
   .site-footer { padding-bottom: calc(28px + 72px); }
 }
 
@@ -645,6 +647,8 @@ a.contact-value:hover { color: var(--blue); }
 
 .news-home { border-top: var(--line) solid var(--ink); }
 .news-home-head { display: flex; align-items: center; justify-content: space-between; gap: 16px; max-width: none; }
+.btn-arrow svg { width: 18px; height: 18px; flex: none; transition: transform var(--t-fast) var(--ease-out); }
+.btn-arrow:hover svg { transform: translateX(3px); }
 .news-cards { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 20px; }
 .news-card { display: flex; flex-direction: column; background: var(--paper); border: var(--line) solid var(--ink); border-radius: var(--radius); overflow: hidden; text-decoration: none; color: var(--ink); transition: transform var(--t-fast) var(--ease-out); }
 .news-card:hover { transform: translateY(-2px); color: var(--ink); }
