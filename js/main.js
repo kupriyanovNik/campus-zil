@@ -286,65 +286,88 @@
   }
   renderDay();
 
-  /* ---------- Карусель галереи ---------- */
+  /* ---------- Карусель галереи (зацикленная) ---------- */
 
   const carousel = $('[data-carousel]');
   if (carousel) {
     const viewport = $('[data-viewport]', carousel);
     const track = $('[data-track]', carousel);
-    const slides = $$('.carousel-slide', track);
     const prevBtn = $('[data-prev]', carousel);
     const nextBtn = $('[data-next]', carousel);
     const dotsEl = $('[data-dots]', carousel);
-    let index = 0;
-    let offset = 0;
+    const originals = $$('.carousel-slide', track);
+    const n = originals.length;
 
-    slides.forEach((_, i) => {
+    // Клоны с обеих сторон, чтобы лента была бесконечной.
+    originals.forEach(s => { const c = s.cloneNode(true); c.classList.add('is-clone'); c.setAttribute('aria-hidden', 'true'); track.appendChild(c); });
+    originals.slice().reverse().forEach(s => { const c = s.cloneNode(true); c.classList.add('is-clone'); c.setAttribute('aria-hidden', 'true'); track.insertBefore(c, track.firstChild); });
+    const slides = $$('.carousel-slide', track);
+    let index = n; // индекс в расширенном списке; оригиналы занимают [n, 2n)
+    let offset = 0;
+    let animating = false;
+
+    originals.forEach((_, i) => {
       const d = document.createElement('button');
       d.type = 'button';
       d.setAttribute('role', 'tab');
-      d.setAttribute('aria-label', `Фото ${i + 1} из ${slides.length}`);
-      d.addEventListener('click', () => go(i));
+      d.setAttribute('aria-label', `Фото ${i + 1} из ${n}`);
+      d.addEventListener('click', () => go(n + i));
       dotsEl.appendChild(d);
     });
     const dots = $$('button', dotsEl);
 
-    const offsetFor = (i) => {
-      const s = slides[i];
-      return viewport.clientWidth / 2 - (s.offsetLeft + s.offsetWidth / 2);
+    const offsetFor = (i) => { const s = slides[i]; return viewport.clientWidth / 2 - (s.offsetLeft + s.offsetWidth / 2); };
+    const apply = (x, animate = true) => {
+      track.style.transition = animate ? '' : 'none';
+      track.style.transform = `translate3d(${x}px, 0, 0)`;
+      if (!animate) void track.offsetWidth; // сброс transition
     };
-    const apply = (x) => { track.style.transform = `translate3d(${x}px, 0, 0)`; };
+    const mark = () => {
+      const real = ((index - n) % n + n) % n;
+      slides.forEach((s, k) => s.classList.toggle('is-active', ((k - n) % n + n) % n === real));
+      dots.forEach((d, k) => d.setAttribute('aria-selected', String(k === real)));
+    };
 
-    function go(i) {
-      index = Math.max(0, Math.min(slides.length - 1, i));
+    function go(i, animate = true) {
+      index = i;
       offset = offsetFor(index);
-      apply(offset);
-      slides.forEach((s, k) => s.classList.toggle('is-active', k === index));
-      dots.forEach((d, k) => d.setAttribute('aria-selected', String(k === index)));
-      prevBtn.disabled = index === 0;
-      nextBtn.disabled = index === slides.length - 1;
+      apply(offset, animate);
+      mark();
+      animating = animate;
     }
 
-    prevBtn.addEventListener('click', () => go(index - 1));
-    nextBtn.addEventListener('click', () => go(index + 1));
+    // После анимации у края незаметно прыгаем к тому же слайду среди оригиналов.
+    track.addEventListener('transitionend', e => {
+      if (e.target !== track) return;
+      animating = false;
+      if (index < n || index >= 2 * n) {
+        index = n + ((index - n) % n + n) % n;
+        offset = offsetFor(index);
+        apply(offset, false);
+      }
+    });
+
+    prevBtn.addEventListener('click', () => { if (!animating) go(index - 1); });
+    nextBtn.addEventListener('click', () => { if (!animating) go(index + 1); });
     carousel.addEventListener('keydown', e => {
       if (e.key === 'ArrowLeft') { e.preventDefault(); go(index - 1); }
       if (e.key === 'ArrowRight') { e.preventDefault(); go(index + 1); }
     });
 
     // Перетаскивание мышью и пальцем
-    let startX = 0, dragX = 0, dragging = false, pointerId = null;
+    let startX = 0, dragX = 0, dragging = false;
     viewport.addEventListener('pointerdown', e => {
-      if (e.button !== undefined && e.button !== 0) return;
-      dragging = true; pointerId = e.pointerId; startX = e.clientX; dragX = 0;
+      if (e.button !== 0) return;
+      e.preventDefault(); // не выделять текст подписей
+      if (animating) { animating = false; if (index < n || index >= 2 * n) { index = n + ((index - n) % n + n) % n; } offset = offsetFor(index); apply(offset, false); }
+      dragging = true; startX = e.clientX; dragX = 0;
       viewport.classList.add('is-dragging');
-      viewport.setPointerCapture(pointerId);
+      viewport.setPointerCapture(e.pointerId);
     });
     viewport.addEventListener('pointermove', e => {
       if (!dragging) return;
       dragX = e.clientX - startX;
-      const atEdge = (index === 0 && dragX > 0) || (index === slides.length - 1 && dragX < 0);
-      apply(offset + (atEdge ? dragX * 0.35 : dragX));
+      apply(offset + dragX, false);
     });
     const endDrag = () => {
       if (!dragging) return;
@@ -354,10 +377,10 @@
       if (dragX < -step) go(index + 1);
       else if (dragX > step) go(index - 1);
       else go(index);
+      dragX = 0;
     };
     viewport.addEventListener('pointerup', endDrag);
     viewport.addEventListener('pointercancel', endDrag);
-    viewport.addEventListener('click', e => { if (Math.abs(dragX) > 5) e.preventDefault(); }, true);
 
     // Колесо мыши по горизонтали (трекпад)
     let wheelLock = 0;
@@ -370,9 +393,9 @@
       go(index + (e.deltaX > 0 ? 1 : -1));
     }, { passive: false });
 
-    window.addEventListener('resize', () => go(index));
+    window.addEventListener('resize', () => go(index, false));
     carousel.setAttribute('tabindex', '0');
-    go(0);
+    go(n, false);
   }
 
   /* ---------- Меню ---------- */

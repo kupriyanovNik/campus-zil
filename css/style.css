@@ -293,7 +293,7 @@ strong { font-weight: 600; }
 /* ---------- Gallery / carousel ---------- */
 .gallery .section-head { margin-bottom: 24px; }
 .carousel { position: relative; --slide-w: min(520px, 72vw); }
-.carousel-viewport { overflow: hidden; padding-block: 12px 4px; cursor: grab; touch-action: pan-y; }
+.carousel-viewport { overflow: hidden; padding-block: 12px 4px; cursor: grab; touch-action: pan-y; user-select: none; -webkit-user-select: none; }
 .carousel-viewport.is-dragging { cursor: grabbing; }
 .carousel-track {
   list-style: none; margin: 0; padding: 0; display: flex; gap: 20px; will-change: transform;
@@ -311,8 +311,6 @@ strong { font-weight: 600; }
   display: grid; place-items: center; transition: background-color var(--t-fast), color var(--t-fast), opacity var(--t-fast);
 }
 .carousel-btn:hover { background: var(--ink); color: #fff; }
-.carousel-btn:disabled { opacity: 0.3; cursor: default; }
-.carousel-btn:disabled:hover { background: var(--paper); color: var(--ink); }
 .carousel-btn.is-prev { left: clamp(8px, 3vw, 40px); }
 .carousel-btn.is-next { right: clamp(8px, 3vw, 40px); }
 .carousel-dots { display: flex; justify-content: center; gap: 8px; margin-top: 18px; }
